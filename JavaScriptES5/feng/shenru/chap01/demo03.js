@@ -1,18 +1,19 @@
-/**
- * 原型对象中的constructor属性指向对象的构造函数
- * */
-function Person() {
+var foo = new Function();
+function woo() { }
+var fooObj = new foo()
+var wooObj = new woo()
+console.log("对象")
+console.dir(Function.__proto__)
+console.dir(foo.__proto__)
+console.dir(woo.__proto__)
+console.dir(fooObj instanceof foo)
+console.dir(wooObj instanceof woo)
+console.dir(foo instanceof Function)
+console.dir(woo instanceof Function)
+console.dir(Function instanceof Function)
+console.log("函数")
+console.dir(Function.prototype)
+console.dir(foo.prototype)
+console.dir(woo.prototype)
 
-}
-var person = new Person();
-console.log(person.__proto__.constructor);
-//对于构造函数来说，它本身也是一个对象
-console.log(Person);
-console.log(person.__proto__.constructor==Person);//true
-
-/**对于一个函数类型的对象(Person)，它的构造函数是
- *
- * ƒ Function() { [native code] }
- * */
-console.log(Person.__proto__.constructor);
 
