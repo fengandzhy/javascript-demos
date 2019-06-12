@@ -82,7 +82,7 @@ console.log(person.__proto__ instanceof Object );//true
  * 对于Function 来讲， 它一个内置对象，是运行前就已经存在的东西.
  * 一切对象有一个总得原型对象 就是本例中的 person.__proto__.__proto__. 它是Object.prototype
  * Object 根据这个对象(Object.prototype)创建了 person对象的原型对象, person.__proto__,
- * Object 根据这个对象(Object.prototype)创建了 Function对象的原型对象,Function.__proto__,Function.prototype__
+ * Object 根据这个对象(Object.prototype)创建了 Function对象的原型对象,Function.__proto__,Function.prototype
  * 然后Function根据Person的原型对象创建了Person, 但是Person的原型对象和Function的原型对象是相等的
  *
  * */
