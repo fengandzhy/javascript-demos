@@ -67,8 +67,69 @@ var o = {
 }
 o.b.fn();
 
+/**
+ * 此时输出就是11，此时执行f1时，它的父作用域是fn
+ * */
+var a = 10;
+var o = {
+    b:{
+        a:11,
+        fn:function(){
+            var a = 11;
+            function f1(){
+               console.log(a);
+            }
+            f1();
+        }
+    }
+}
+o.b.fn();
 
 
+
+/**
+ * with(nightn)的意思就是将nightn里面大括号的内容添加到了作用域链的顶端，所以当执行第一个console.log(name); 必然输出nightn，
+ * 因为 作用域是三个，最外层是全局作用域，其次是函数testWith的作用域，最里面是nightn这个变量大括号带来的临时的块级作用域，
+ * 而在这个临时的块级作用域里面name值是nightn,所以输出nightn
+ *
+ * 另外由于这个临时块级作用域的存在，我们可以直接输出console.log(age);而不需要console.log(nightn.age);
+ *
+ * 还有，x是with里面定义的，当with块执行完成后,x照样能够输出，with 语句只是在当前执行环境的作用域链上临时添加给定对象，
+ * 它并不像函数调用那样创建一个新的执行环境，with里面定义var x =1;其实就相当于在函数testWith里面定义var x =1;
+ *
+ * 我们不推荐使用with语句,它只是帮助我们了解作用域的知识
+ *
+ * */
+var nightn = {
+    name: 'nightn',
+    age: '24'
+};
+function testWith() {
+    var name = 'foo';
+    var bo = 'abc';
+    with(nightn) {
+        var x = 1;
+        console.log(name); // nightn
+        console.log(age); //输出临时作用域里面的age
+        console.log(bo); //输出外层作用域的变量bo
+        console.log(nightn.age); //输出全局作用域里的变量nightn
+    }
+    console.log(name); // foo
+    console.log(x); // 1
+}
+testWith();
+
+
+/**
+ * try catch的机制其实跟with差不多
+ * */
+try {
+    undefined();
+} catch (err) {
+    var innerCatch = 'hello';
+    console.log(err); // 可以正常打印 err 对象
+}
+console.log(innerCatch); // hello
 
 
 
@@ -85,6 +146,11 @@ var scope = "local scope";
 f();
 var scope = "local scope";
 function f() { return scope; }
+
+
+
+
+
 
 
 
