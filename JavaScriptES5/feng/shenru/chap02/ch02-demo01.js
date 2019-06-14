@@ -121,15 +121,18 @@ testWith();
 
 
 /**
- * try catch的机制其实跟with差不多
+ * es5没有块级作用域的，
  * */
-try {
-    undefined();
-} catch (err) {
-    var innerCatch = 'hello';
-    console.log(err); // 可以正常打印 err 对象
+var m=1;
+function foo(){
+    console.log(m);//2
 }
-console.log(innerCatch); // hello
+try{
+    var m=2;
+    foo();
+}catch(e){
+    console.log(e)
+}
 
 
 
@@ -146,10 +149,6 @@ var scope = "local scope";
 f();
 var scope = "local scope";
 function f() { return scope; }
-
-
-
-
 
 
 
