@@ -18,6 +18,12 @@
 //console.log(f1);//error
 //console.log(a);//error
 
+(function f1(){
+    var a = 10;
+    console.log(a);
+})
+console.log(f1);
+
 /**
  * 传入一个window对象进这个自执行函数时为了加快执行速度，虽然里面也可以得到window对象，
  * 但是传进去的话，里面找window的时间省去了，这样加快速度
