@@ -27,6 +27,7 @@
     }
     fn2('abc')
 
+    //传一个参数,函数体只有一条语句
     const fn3=a=>console.log(a);
     fn3('def')
 
