@@ -276,12 +276,18 @@ console.log(fn1);//undefined
 }
 console.log(fn1);//function
 
+
+/**
+ * 报错，这里fn1定义在了小括号里，一个函数表达式(FunctionExpression, 缩写为 FE) 而不是函数声明.函数表达式不会影响VO
+ * 跟上例的函数表达式不同，这里的函数表达式并没有分配给var定义的变量，而上例声明在大括号里的函数fn1相当于var fna=function(){}
+ * 换句话说下例的这个函数表达式是一个未保存的函数表达式
+ * */
 (
     function fn1(){
         console.log('abcd');
     }
 )
-console.log(fn1);
+console.log(fn1);//报错
 
 
 
