@@ -255,3 +255,12 @@ Person.prototype.test = function(){
 };
 Person.prototype.test();
 
+
+function fn1(a){
+    console.log(a);
+    console.log(this);
+}
+
+fn1(this);
+
+
