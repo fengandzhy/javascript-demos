@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        #mes{
+            width: 200px;height: 300px;border: 1px solid black;
+        }
+    </style>
+</head>
+<script type="text/javascript">
+    //这种情况报错,因为btn尚未加载,如果选择document.getElementById('btn');加载到的是null
+    btn.onclick = function(){
+        console.log('abc');
+    }
+</script>
+<body>
+<div id='mes'></div>
+<textarea id='toMes'></textarea>
+<input type='button' value='发送' id='btn'>
+</body>
+</html>
