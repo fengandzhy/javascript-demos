@@ -2,6 +2,11 @@
  * 闭包
  * */
 
+
+/**
+ *
+ *
+ * */
 function checkscope(){
     var scope = "local scope";
     function f(){
@@ -16,4 +21,14 @@ foo();
 
 
 
+var a = (function fn(){
+    var local = "abc";
+    return function f1(){
+        debugger;
+        console.log(local);
+    }
+    console.log(local);
+})();
+
+a();
 
