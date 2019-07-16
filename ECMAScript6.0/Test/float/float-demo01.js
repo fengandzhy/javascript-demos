@@ -27,3 +27,16 @@ console.log(0.1 * 0.2);
 console.log(roundFractional(0.1 * 0.2, 2));
 
 
+/**
+ * 新的解决方案
+ *
+ * */
+function round (number) {
+    if (!isNaN(number)) {
+        return Math.round(number * 100) / 100;
+    }
+}
+console.log(0.1 + 0.2);
+console.log(round(0.1 + 0.2, 1));
+console.log(0.1 * 0.2);
+console.log(round(0.1 * 0.2, 2));
