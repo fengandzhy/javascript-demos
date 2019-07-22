@@ -28,15 +28,15 @@ console.log(roundFractional(0.1 * 0.2, 2));
 
 
 /**
- * 新的解决方案
+ * 新的解决方案,精确到小数点后面3位
  *
  * */
 function round (number) {
     if (!isNaN(number)) {
-        return Math.round(number * 100) / 100;
+        return Math.round(number * 1000) / 1000;
     }
 }
 console.log(0.1 + 0.2);
-console.log(round(0.1 + 0.2, 1));
-console.log(0.1 * 0.2);
-console.log(round(0.1 * 0.2, 2));
+console.log(round(0.1 + 0.2,));
+console.log(0.1223 * 0.2);
+console.log(round(0.1223 * 0.2));
