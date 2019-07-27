@@ -9,5 +9,5 @@ var b =15;
 
 setInterval(function(b,a){
     console.log(a);
-},1000,a,b)
+},1000,a,b);
 

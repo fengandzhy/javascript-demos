@@ -69,8 +69,25 @@ data[1]();
 data[2]();
 
 
+function fn1 (a,b){
+    fn2(a,function (result){
+        console.log(b);
+    });
+}
 
+function fn2 (c,d){
+    d();
+}
+var b =1;
+fn1(1,b);
+b=3;
 
+function aa() {
+    debugger;
+    var str = setTimeout(function() {
+        return "want-value";
+    }, 1000);
+    console.log(str);
+}
 
-
-
+aa();
