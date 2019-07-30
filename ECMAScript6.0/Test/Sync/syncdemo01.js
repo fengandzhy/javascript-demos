@@ -1,17 +1,20 @@
-function f1(callback){
 
-    setTimeout(function () {
+console.log('This ia 1');
+async function a() {
+    sleep(1000);
+    console.log('This is a');
+}
+a();
+console.log('This ia 2');
 
-        // f1的任务代码
-        //console.log('This is f1');
 
-        callback();
-
-    }, 1000);
+function sleep(n) {
+    var start = new Date().getTime();
+    //  console.log('休眠前：' + start);
+    while (true) {
+        if (new Date().getTime() - start > n) {
+            break;
+        }
+    }
 }
 
-function f2(){
-    console.log('This is f2');
-}
-
-f1(f2);
