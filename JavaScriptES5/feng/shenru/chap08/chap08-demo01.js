@@ -8,13 +8,20 @@
  * 虽然函数foo执行的时候，函数checkscope已经从执行上下文栈当中弹出，但是垃圾回收机制不会将其回收，至少不会将AO上的scope对象回收
  * 所以foo还是能够访问到的
  *
+ * 从另一角度讲，我们知道 f 执行上下文维护了一个作用域链
+ * fContext = {
+    Scope: [AO, checkscopeContext.AO, globalContext.VO],
+    }
+ *
  * */
 function checkscope(){
     var scope = "local scope";
     function f(){
         console.log(scope);
-        scope = 'leeee' //此处的scope是放在了checkscope的AO中,还是放在了全局上下文的VO呢
+        scope = 'leeee' //此处的scope是放在了checkscope的AO中,还是放在了全局上下文的VO呢,当然是放在了checkscope的AO中
         console.log(scope);
+        console.dir();
+        debugger;
     }
     return f;
 }
@@ -91,3 +98,17 @@ function aa() {
 }
 
 aa();
+
+
+var a = 1;
+function foo() {
+    console.log(a);
+    debugger;
+}
+foo();
+
+
+
+
+
+
