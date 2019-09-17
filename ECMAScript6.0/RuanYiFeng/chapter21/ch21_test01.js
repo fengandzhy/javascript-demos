@@ -43,6 +43,8 @@ var foo = new Foo(); //不报错
 
 /**
  * 实例的属性除非显式定义在其本身（即定义在this对象上），否则都是定义在原型上（即定义在class上）
+ * 另外constructor的参数就是类在new时的参数
+ *
  * */
 class Point {
 
@@ -51,6 +53,7 @@ class Point {
         this.y = y;
     }
 
+    //这里的toString方法是在那个原型上的
     toString() {
         return '(' + this.x + ', ' + this.y + ')';
     }
@@ -73,22 +76,47 @@ p1.printName(); // "Oops"
 p2.printName(); // "Oops"
 
 
+class Point {
 
+    constructor(x, y) {
+        this.x = x;
+        this.y = y;
+    }
+
+    //这里的toString方法是在那个原型上的
+    toString() {
+        console.log('abcd');
+        console.log(this)
+    }
+
+    //如果写成这样,这里的this指向的是undefined,es6默认使用严格模式
+    toString1(){
+        function abc(){
+            //this.toString();
+            console.log(this);
+        }
+        abc.bind(this)();
+    }
+
+}
+
+var point = new Point(2, 3);
+point.toString1();
 /**
  * 与 ES5 一样，在“类”的内部可以使用get和set关键字，对某个属性设置存值函数和取值函数，拦截该属性的存取行为。
  * */
 
-class MyClass {
-    constructor() {
-        // ...
-    }
-    get prop() {
-        return 'getter';
-    }
-    set prop(value) {
-        console.log('setter: '+value);
-    }
-}
+// class MyClass {
+//     constructor() {
+//         // ...
+//     }
+//     get prop() {
+//         return 'getter';
+//     }
+//     set prop(a) {
+//         console.log('setter: ');
+//     }
+// }
 
 let inst = new MyClass();
 console.log(inst);
