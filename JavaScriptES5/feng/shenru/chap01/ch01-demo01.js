@@ -8,6 +8,8 @@
  * Person.prototype 也是person对象的原型对象
  * 或者也可以通过Object.getPrototypeOf(person)
  * 只有函数对象才有prototype属性
+ *
+ * person的原型对象的意思就是说,person对象是根据这个原型对象创建出来的,也就是说这个原型对象是创建person对象的模板
  * */
 function Person(){
 }
@@ -16,13 +18,15 @@ console.log(person.__proto__);
 console.log(Person.prototype);
 console.log(Person.prototype ===person.__proto__); //true
 console.log(Object.getPrototypeOf(person) === Person.prototype)//true
-
+console.log(Person);
 
 
 
 /**
  * 这里访问person1.name，它会从person1里面找name属性，发现没有，它就会去原型对象里面找了,
  * 原型对象里没有的话就去原型对象的原型对象里去找了
+ *
+ * 从这点也可以看出其实person对象继承自它的原型对象
  * */
 function Person(){
 }
@@ -97,10 +101,12 @@ var person = new Person();
 console.log(Person.__proto__);//ƒ () { [native code] }
 console.log(Person.__proto__.__proto__); //constructor属性指向Object
 console.log(Person.prototype === Person.__proto__);//false
-console.log(Person.__proto__ === Function.__proto__);
-console.log(Function.prototype === Person.__proto__);
-console.log(Function.prototype.__proto__ === Person.prototype.__proto__);
-console.log(Function.__proto__.__proto__ === Person.prototype.__proto__);
+console.log(Person.__proto__ === Function.__proto__);//true
+console.log(Function.prototype === Person.__proto__);//true
+console.log(Function.prototype.__proto__ === Person.prototype.__proto__);//true
+console.log(Function.__proto__.__proto__ === Person.prototype.__proto__);//true
+
+
 
 
 
