@@ -86,22 +86,25 @@ class Point {
     //这里的toString方法是在那个原型上的
     toString() {
         console.log('abcd');
-        console.log(this)
+        console.log(this);
+        this.toString1()
     }
 
     //如果写成这样,这里的this指向的是undefined,es6默认使用严格模式
     toString1(){
-        function abc(){
-            //this.toString();
-            console.log(this);
-        }
-        abc.bind(this)();
+        console.log("abcd");
+        console.log(this);
+        // function abc(){
+        //     //this.toString();
+        //     console.log(this);
+        // }
+        // abc.bind(this)();
     }
 
 }
 
 var point = new Point(2, 3);
-point.toString1();
+point.toString();
 /**
  * 与 ES5 一样，在“类”的内部可以使用get和set关键字，对某个属性设置存值函数和取值函数，拦截该属性的存取行为。
  * */
