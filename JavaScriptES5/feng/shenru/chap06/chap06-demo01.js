@@ -263,4 +263,19 @@ function fn1(a){
 
 fn1(this);
 
+/**
+ * 这里会打印出啦5,因为里面的那个function是自己调用的,所以在非严格模式下指向window
+ * */
+var a = 5;
+var b={
+    a:12,
+    show:function(){
+        setTimeout(function(){
+            console.log(this.a);
+        },1000);
+    }
+};
+b.show();
+
+
 
