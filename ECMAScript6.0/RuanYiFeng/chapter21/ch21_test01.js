@@ -90,7 +90,7 @@ class Point {
         this.toString1()
     }
 
-    //如果写成这样,这里的this指向的是undefined,es6默认使用严格模式
+
     toString1(){
         console.log("abcd");
         console.log(this);
@@ -109,17 +109,18 @@ point.toString();
  * 与 ES5 一样，在“类”的内部可以使用get和set关键字，对某个属性设置存值函数和取值函数，拦截该属性的存取行为。
  * */
 
-// class MyClass {
-//     constructor() {
-//         // ...
-//     }
-//     get prop() {
-//         return 'getter';
-//     }
-//     set prop(a) {
-//         console.log('setter: ');
-//     }
-// }
+class MyClass {
+    constructor() {
+
+    }
+    get prop() {
+        return 'getter';
+    }
+    set prop(value) {
+        this.value = value;
+        console.log('setter: '+value);
+    }
+}
 
 let inst = new MyClass();
 console.log(inst);
@@ -197,7 +198,7 @@ function Foo() {}
 
 
 /**
- * 类的方法内部如果含有this，它默认指向类的实例。但是，必须非常小心，一旦单独使用该方法，很可能报错
+ * 类的方法内部如果含有this，它默认指向类的实例。但是，必须非常小心，一旦单独使用该方法，很可能报错，因为this的指向问题
  * */
 class Logger {
     printName(name = 'there') {
@@ -220,7 +221,8 @@ printName();
  * */
 class Logger {
     constructor() {
-        this.printName = this.printName.bind(this);
+
+        this.printName = this.printName.bind(this);//意思是让printName里面的this指向Logger创建出来的对象
     }
 
     printName(name = 'there') {
