@@ -14,3 +14,12 @@ if(data.a){
 }
 
 
+var a = 0;
+debugger;
+console.log(a === null);
+console.log(a === undefined);
+console.log(a === '');
+if (a === null || a === undefined || a === '') {
+    console.log(a);
+}
+
