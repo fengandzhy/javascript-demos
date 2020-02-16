@@ -12,3 +12,13 @@ var reducer = function add(sumSoFar, item) {
 var total = items.reduce(reducer, {sum: 0});
 
 console.log(total); // {sum:1130}
+
+
+
+
+
+const array1 = [1, 2, 3, 4];
+const reducer = (accumulator, currentValue) => accumulator + currentValue;
+console.log(array1.reduce(reducer));
+console.log(array1.reduce(reducer, 5));
+
