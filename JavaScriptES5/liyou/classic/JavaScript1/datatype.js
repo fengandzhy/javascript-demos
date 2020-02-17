@@ -25,3 +25,8 @@ var datatype = undefined
 console.log(typeof(datatype));
 
 
+
+
+
+
+
