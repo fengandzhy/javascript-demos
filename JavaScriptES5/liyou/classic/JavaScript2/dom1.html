@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		
+	</style>
+	<script type="text/javascript">
+        window.onload=function(){
+            //var a = [1,2,3];
+            var elements = document.getElementsByName('div'); //它返回的不是数组，而是一个NodeList的对象
+            debugger;
+            console.log(elements.length);
+            console.log(elements);
+            //sleep(10000);
+            //elements[0].innerHTML='abc';
+            elements[1]='abc'; //elements 不是数组，不接受这样的赋值
+            console.log(elements.length); //此时的length是1，因为上面一个语句已经将另外一个dom替换掉了。
+            console.log(elements[1]);
+            //console.log(a); 纯粹的数组打印出来的是Array
+        }
+
+        function sleep(n) {
+            var start = new Date().getTime();            
+            while (true) {
+                if (new Date().getTime() - start > n) {
+                    break;
+                }
+            }
+        }
+	</script>
+</head>
+<body>	
+	<div name="div">
+        <div name = 'div'></div>
+    </div>	
+</body>
+</html>
