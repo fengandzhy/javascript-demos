@@ -39,3 +39,11 @@ setTimeout(()=>{
 },0);
 console.log('猴哥最快');
 
+
+for(let i =0;i<10;i++){
+    console.log('abcd');
+    setTimeout(()=>{
+        console.log('qqqs');
+    },200);
+}
+

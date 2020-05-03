@@ -101,3 +101,5 @@ let b = 1;
 console.log(window.b);// undefined
 
 
+a = 1;
+let a = 2;

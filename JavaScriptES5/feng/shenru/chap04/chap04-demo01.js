@@ -289,5 +289,17 @@ console.log(fn1);//function
 )
 console.log(fn1);//报错
 
+/**
+ * 在js中是没有重载这个概念的，第一个fn1没有参数,第二个fn1有参数 此时在进入上下文的时候 第二个fn1 覆盖了第一个fn1的定义
+ * */
+fn1();
+function fn1(){
+    console.log('a');
+}
 
+function fn1(a){
+    console.log('b');
+}
+
+fn1();
 
