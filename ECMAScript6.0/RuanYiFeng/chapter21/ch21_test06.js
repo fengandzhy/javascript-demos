@@ -10,3 +10,13 @@ class Point{
 }
 let point = new Point(2,3);
 console.log(point);
+
+Point.prototype = 'ab';
+console.log(Point.prototype);
+
+function Point(){
+
+}
+
+Point.prototype = 'abc';
+console.log(Point.prototype);

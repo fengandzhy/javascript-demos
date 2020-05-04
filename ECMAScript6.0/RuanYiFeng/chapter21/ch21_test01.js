@@ -121,9 +121,26 @@ console.log(point);
 point.fn1();
 point.toString();
 
+/**
+ * 如果是class 定义的Point，它对象的原型是不会通过这个Point.prototype = 'ab';来改变的
+ * 如果是function的Point,它的对象原型是可以通过Point.prototype = 'abc';改变
+ * */
+class Point{
+
+}
+Point.prototype = 'ab';
+console.log(Point.prototype);//f
+
+
+function Point(){
+
+}
+Point.prototype = 'abc';
+console.log(Point.prototype);
 
 /**
  * 与 ES5 一样，在“类”的内部可以使用get和set关键字，对某个属性设置存值函数和取值函数，拦截该属性的存取行为。
+ * prop属性有对应的存值函数和取值函数
  * */
 
 class MyClass {
@@ -142,7 +159,7 @@ class MyClass {
 let inst = new MyClass();
 console.log(inst);
 
-inst.prop = 123;
+inst.prop = 123; //这里调用的set函数
 // setter: 123
 
 console.log(inst.prop);
@@ -162,10 +179,15 @@ class CustomHTMLElement {
     }
 }
 
+//这个方法是得到了某个属性的修饰
 var descriptor = Object.getOwnPropertyDescriptor(
     CustomHTMLElement.prototype, "html"
 );
-
+console.log(CustomHTMLElement.prototype);
+console.log(descriptor);
+"get" in descriptor  // true
+"set" in descriptor  // true
+debugger;
 console.log(descriptor);
 console.log(new CustomHTMLElement('abc'));
 
@@ -228,7 +250,7 @@ class Logger {
 }
 
 const logger = new Logger();
-const {printName}  = logger; //将logger里面的printName提取出来
+const {printName}  = logger; //将logger里面的printName提取出来这个是解构赋值
 console.log(printName);
 printName();
 
