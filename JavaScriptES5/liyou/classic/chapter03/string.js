@@ -18,6 +18,10 @@ console.log(a.slice(2,0)); //返回空，跟substring 不一样
 
 console.log(a.substr(2,1)); //返回c 第一个参数是从哪一位开始，第二个参数是往后截几位
 
+var str = "1234567890";
+console.log(str.slice(2,-5)); //字符串长度是为10加上-5就相当于str.slice(2,5)
+
+
 var b = 'abc';
 var c = 'def';
 
