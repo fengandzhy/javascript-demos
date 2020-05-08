@@ -4,7 +4,27 @@
 
 /**
  * 基本数据类型,按值传递
+ * 当传递 value 到函数 fn1 中，相当于拷贝了一份 value，假设拷贝的这份叫 _value，函数中修改的都是 _value 的值，而不会影响原来的 value 值
  * */
+
+var value = 3;
+function fn1(value){
+    v = 4;
+}
+fn1(value);
+console.log(value);
+
+/**
+ * 如果不是基本数据类型,传过去的是引用的副本
+ * */
+var value = new Number(3);
+function fn1(value){
+    v = 4;
+}
+fn1(value);
+console.log(value);
+
+
 var obj = {
     value: 1
 };

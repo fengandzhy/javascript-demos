@@ -10,6 +10,8 @@
 
 /**
  * 以下就是一个自执行函数 f1,a 对外都不可见,对外不会造成变量污染。
+ * 之所以对外不可见，是因为它是在一个匿名函数的作用域里面的。
+ * js中圆括号里面的内容就相当于是一个函数传参数的地方，它不是函数体
  * */
 (function f1(){
     var a = 10;
@@ -22,7 +24,33 @@
     var a = 10;
     console.log(a);
 })
-console.log(f1);
+console.log(f1);//error
+
+(function fn1(){
+    console.log('abc');
+}());
+
+
+/**
+ * 以下代码再次印证了这点，js中圆括号里面的内容就相当于是一个函数传参数的地方，它不是函数体
+ * 另外就是说，这个匿名函数就相当于下面这个fn1
+ *
+ * */
+function fn1(a){
+   return a;
+}
+
+fn1(function fn2(){
+    return 2;
+});
+
+fn1(function fn2(){
+    return 2;
+}());
+
+fn1(function fn2(){
+    return 2;
+})();
 
 /**
  * 传入一个window对象进这个自执行函数时为了加快执行速度，虽然里面也可以得到window对象，

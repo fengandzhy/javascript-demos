@@ -50,7 +50,7 @@ function f1(a){
 f1(1);
 
 
-
+/**这是个立即执行函数*/
 ;(function(window,yx,undefined){
     var _count=0;
     yx.lg=function(v){
@@ -60,6 +60,8 @@ f1(1);
     debugger;
 })(window,window.yx||(window.yx={}));
 yx.lg('aabbcc');
+
+
 
 
 

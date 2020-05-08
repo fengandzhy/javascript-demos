@@ -2,25 +2,20 @@
 /**
  *
  * */
-Function.prototype.call2 = function(context) {
-    console.log(context);
-    console.log(this);
-    context.fn = this;//这里的this指向的是bar
-    context.fn();//当这么调用时，bar里的this指向了foo
+Function.prototype.call2 = function(context){
+    context.fn = this; //因为是bar调用的call2 所以this指向bar
+    context.fn();
     delete context.fn;
 }
 
-// 测试一下
-var foo = {
-    value: 1
-};
-
-function bar() {
-    console.log(this.value);
+var obj = {
+    value:1
 }
 
-bar.call2(foo); // 1
-
+function bar(){
+    console.log(this.value);
+}
+bar.call2(obj);
 
 
 

@@ -178,6 +178,8 @@ console.log(a);
  * 当执行到function a(){}的时候,发现在VO上已经有了一个名字为a的属性, 覆盖掉它,所以此时VO上的a属性的值是function
  * 进入执行阶段时，第一个console.log(a);就输出了function, 而执行第二个console.log(a);时候，在执行阶段由于var a = 10;的存在a被再次赋值，
  * 所以第二个console.log(a);输出10
+ *
+ * 在预解析的时候,VO上的a已经是20了而不是undefined,因为此刻a是形参
  * */
 function foo3(a){
     console.log(a);
@@ -222,6 +224,9 @@ function a() {
     console.log(aaa);//123
 };
 a();
+
+
+
 
 
 /**
@@ -302,4 +307,18 @@ function fn1(a){
 }
 
 fn1();
+
+
+/**
+ *
+ * */
+
+
+
+
+
+
+
+
+
 
