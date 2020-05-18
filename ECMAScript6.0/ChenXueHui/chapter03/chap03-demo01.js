@@ -34,16 +34,29 @@ console.log('终于等到我了！');*/
 setTimeout(()=>{
     console.log('老沙最慢');
 },100);
+
+sleep(3000);
+
 setTimeout(()=>{
     console.log('八戒第二');
 },0);
 console.log('猴哥最快');
 
 
-for(let i =0;i<10;i++){
-    console.log('abcd');
-    setTimeout(()=>{
-        console.log('qqqs');
-    },200);
-}
+// for(let i =0;i<10;i++){
+//     console.log('abcd');
+//     setTimeout(()=>{
+//         console.log('qqqs');
+//     },200);
+// }
 
+
+function sleep(n) {
+    var start = new Date().getTime();
+    //  console.log('休眠前：' + start);
+    while (true) {
+        if (new Date().getTime() - start > n) {
+            break;
+        }
+    }
+}
