@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div{
+            width: 100px;
+            height: 100px;
+            background: green;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+    </style>
+</head>
+<body>
+    <img src="" alt="" />
+    <div></div>
+</body>
+</html>
+<script>
+    {
+        const loadImg=url=>new Promise((resolve,reject)=>{
+            const img=new Image();
+            img.onload=()=>resolve(img);
+            img.onerror=()=>reject(url);
+            img.src=url;
+        });
+
+        const img=document.querySelector("img");
+        loadImg('./files/11.jpg')
+            .then(
+                value=>img.src=value.src
+            );
+
+    }
+    {
+        console.log('最外面的');
+        const ajax = (url,success,fail)=>{
+            console.log('1');
+            const xhr = new XMLHttpRequest;
+            xhr.open('GET',url);
+            xhr.onreadystatechange=function(){
+                //debugger;
+                console.log('2');
+                if(this.readyState == 4){
+                    console.log('3');
+                    if(this.status == 200){
+                        console.log('4');
+                        success(this.response);
+                    }else{
+                        console.log('4r');
+                        fail(new Error(this.statusText))
+                    }
+                }
+            }
+            console.log('5');
+            xhr.send();
+        }
+        function success(value) {
+            console.log(value);
+        }
+
+        function fail(value){
+            console.log(value);
+        }
+        ajax('./files/hello.txt',success,fail);
+
+        /**
+         * 这种方式如果返回有错误就会报错,错误是fail没有被定义
+         * */
+        /*ajax('./files/hello1.txt',function(data){
+					console.log(data);
+        });*/
+    }
+
+    {
+
+    }
+</script>

@@ -30,6 +30,18 @@
             }
         }
     }
+
+    const p = new Promise((resolve,reject)=>{
+        resolve('resolve');
+        reject('reject');
+    }).then(
+        value => {
+            console.log(value);
+        },
+        error => {
+            console.log(error);
+        }
+    );
 </script>
 </body>
 </html>

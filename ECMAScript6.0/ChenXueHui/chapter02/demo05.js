@@ -117,3 +117,12 @@
     //test();
 }
 
+/**
+ * const obj = url => new Object(); 等同于 const obj = url => { return new Object();}
+ * 它并不等同于 const obj = url => { new Object();}
+ * */
+{
+    const obj = url => new Object();
+
+    console.log(obj('url'));
+}
