@@ -9,6 +9,8 @@ new Promise(resolve => {
     },2000);
 }).then(value=>{
     console.log(value+' world');
+}, error=>{
+    console.log('error');
 });
 
 

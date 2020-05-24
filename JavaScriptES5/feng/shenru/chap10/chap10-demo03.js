@@ -1,3 +1,6 @@
+/**
+ * 模拟call当函数有返回值的时候
+ * */
 function bar(name,age){
     console.log(name);
     console.log(age);
