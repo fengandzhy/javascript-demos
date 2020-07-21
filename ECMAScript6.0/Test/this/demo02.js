@@ -8,8 +8,8 @@ const jerry = {
     },
 
     render: function () {
-        this.exec(this.sayThis);
+        this.exec(this.sayThis.bind(this));
     },
 }
-
 jerry.render();
+

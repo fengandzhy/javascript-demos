@@ -10,7 +10,7 @@ class Cat {
     }
 
     render () {
-        this.exec(this.sayThis);
+        this.exec(this.sayThis.bind(this));
     }
 }
 
