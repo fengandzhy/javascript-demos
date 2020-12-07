@@ -41,11 +41,14 @@ setTimeout(()=>{
 },0);
 
 new Promise((resolve,reject)=>{
+    // setTimeout(()=>{
+    //     console.log('Promise的');
+    // },0);
     console.log('Promise的');
     resolve();
 }).then(()=>{
     console.log('then的');
 });
-
+console.log('又是全局的');
 
 

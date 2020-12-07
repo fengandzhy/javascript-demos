@@ -1,3 +1,7 @@
+
+/**
+ * resolve('hello'); 只有调用resolve才会执行then
+ * */
 console.log('Here we go');
 new Promise(resolve => {
     setTimeout( ()=>{
@@ -5,6 +9,8 @@ new Promise(resolve => {
     },2000);
 }).then(value=>{
     console.log(value+' world');
+}, error=>{
+    console.log('error');
 });
 
 

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>拖拽</title>
+    <style type="text/css">
+        #div{
+            width: 100px;
+            height: 100px;
+            background: black;
+            position: absolute;
+            left: 100px;
+            top: 100px;
+        }
+        #div2{
+            width: 10px;
+            height: 10px;
+            background: red;
+            position: absolute;
+            left: 10px;
+            top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id='div'>
+        <div id='div2'></div>
+    </div>
+</body>
+<script type="text/javascript">
+    /**
+     * clientX、clientY 点击位置距离当前body可视区域的x，y坐标
+     * pageX、pageY 对于整个页面来说，包括了被卷去的body部分的长度
+     * screenX、screenY 点击位置距离当前电脑屏幕的x，y坐标
+     * offsetX、offsetY 相对于带有定位的父盒子的x，y坐标
+     * */
+    div.onmousedown = function(e){
+        //debugger;
+        var ev = e || event;
+        var l = ev.clientX - this.offsetLeft;
+        var t = ev.clientY - this.offsetTop;
+
+        document.onmousemove = function(e){
+            var ev = e || event;
+
+
+            div.style.left = ev.clientX - l + 'px';
+            div.style.top = ev.clientY - t + 'px';
+        }
+
+        document.onmouseup = function(){
+            document.onmousemove =null;
+            document.onmouseup = null;
+        }
+    }
+
+    div2.onmousedown = function(e){
+
+        e.stopPropagation();//阻止事件冒泡
+        var ev = e || window.event;
+        var l = ev.clientX - this.offsetLeft;
+        var t = ev.clientY - this.offsetTop;
+
+
+
+        /**
+         * 在拖拽的时候动的始终 ev.clientY - t 和 ev.clientX - l 而 div2.offsetLeft 和 div2.offsetTop 是被动运动的
+         * 所以只能用主动运动的来判断位置
+         * */
+        document.onmousemove = function(e){
+            var ev = e || event;
+            if(0<ev.clientX - l && ev.clientX - l <=90){
+                div2.style.left = ev.clientX - l + 'px';
+            }
+
+            if(0<ev.clientY - t && ev.clientY - t <=90){
+                div2.style.top = ev.clientY - t + 'px';
+            }
+
+            // console.log(div2.offsetLeft);
+            // console.log(div2.offsetTop);
+            //
+            // console.log(ev.clientX - l);
+            // console.log(ev.clientY - t);
+            //
+            //
+            // if(div2.offsetLeft<90 && div2.offsetTop<90 && div2.offsetLeft>0 && div2.offsetTop>0){
+            //     div2.style.left = ev.clientX - l + 'px';
+            //     div2.style.top = ev.clientY - t + 'px';
+            // }
+        }
+
+        document.onmouseup = function(){
+            document.onmousemove =null;
+            document.onmouseup = null;
+        }
+    }
+
+</script>
+</html>

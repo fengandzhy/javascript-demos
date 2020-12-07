@@ -75,8 +75,13 @@ console.log(a1.sort(function (a,b){ return a -b;}));
 var a = [1,2,3];
 console.log(a.join(''));
 
-
-
+/**
+ * foreach 循环
+ * */
+var array = [4,5,6];
+array.forEach(function (value) {
+    console.log(value);
+});
 
 
 

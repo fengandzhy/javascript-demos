@@ -12,14 +12,17 @@
             console.log(document.getElementById('div').innerText);//什么都没有
             console.log(document.getElementById('div').outerHTML);//它本身
 
-            var e = document.getElementById('div');
+            console.log(document.getElementById('div2').innerText == document.getElementById('div2').innerHTML);//true
+
+
+			var e = document.getElementById('div');
             console.log(e === div); //直接写div就相当于document.getElementById('div')
         }
 	</script>
 </head>
 <body>	
 	<div id="div">
-        <div id = 'div2'></div>
+        <div id = 'div2'>abc</div>
     </div>	
 </body>
 </html>

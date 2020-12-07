@@ -1,30 +1,28 @@
 
 /**
+ * 模拟call的实现
  *
  * */
-Function.prototype.call2 = function(context) {
-    console.log(context);
-    console.log(this);
-    context.fn = this;//这里的this指向的是bar
-    context.fn();//当这么调用时，bar里的this指向了foo
+Function.prototype.call2 = function(context){
+    context.fn = this; //因为是bar调用的call2 所以这里的this就是指的bar
+    context.fn(); //由于第一步context.fn 指向了bar所以这里的执行就相当于在执行bar这个函数,但它是context.fn来调用的函数里面的this自然指向context
     delete context.fn;
 }
 
-// 测试一下
-var foo = {
-    value: 1
-};
-
-function bar() {
-    console.log(this.value);
+var obj = {
+    value:1
 }
 
-bar.call2(foo); // 1
+function bar(){
+    console.log(this.value);
+}
+bar.call2(obj);
 
 
 
-
-
+/**
+ * 考虑到了后面的函数问题
+ * */
 Function.prototype.call2 = function(context) {
     context.fn = this;
     var args = [];
@@ -48,11 +46,11 @@ function bar(name, age) {
 
 bar.call2(foo, 'kevin', 18);
 
-var args = [];
-args.push('a');
-args.push(2);
-
-console.log(args.join(','));
+// var args = [];
+// args.push('a');
+// args.push(2);
+//
+// console.log(args.join(','));
 
 
 

@@ -47,7 +47,7 @@
 
 
 /**
- * 关于箭头函数的this,箭头函数没有this，在箭头函数里的this 绑定的就是最近一层非箭头函数的 this
+ * 关于箭头函数的this,箭头函数没有this，在箭头函数里的this 绑定的就是最近一层作用域非箭头函数的 this
  *
  * 例如在show4里面的this, 它最近一层的非箭头函数是show3, 所以show4里面的this的指向，就相当于调用show3时，show3里面的this指向
  * 所以，执行dog.show3(); 如果show3里面有this，此时指向的就是dog，所以show3里面的箭头函数show4的this也就指向dog
@@ -117,3 +117,80 @@
     //test();
 }
 
+/**
+ * const obj = url => new Object(); 等同于 const obj = url => { return new Object();}
+ * 它并不等同于 const obj = url => { new Object();}
+ * */
+{
+    const obj = url => new Object();
+
+    console.log(obj('url'));
+}
+
+/**
+ * 那么这里面该如何判断箭头函数的this指向呢？首先要明白一点哦，这个箭头函数()=>this.sayThis() 最近的一层非箭头函数是哪个？
+ * 究竟是exec1 函数的作用域还是render 函数的作用域呢？首先()=>this.sayThis() 作为一个实参传入了exec1, 那么它是在哪里定义的呢？
+ * 首先它肯定是在render里面定义的 exec1(()=>this.sayThis()); 说白了就相当于 const a = ()=>this.sayThis(); exec1(a);
+ * 所以这个函数的外层作用域自然就是 render函数 同理那么箭头函数()=>this.sayThis(); 就相当于调用render时 render的this指向
+ * 所以呢，如果当jerry.render(); 调用的话，this自然指向的是 jerry, 而const fn1 = jerry.render; fn1();  调用的话this指向的是 window 报错
+ * ()=>this.sayThis() 这个函数的意思就是在它的函数体里面只有一条语句,那就是执行this.sayThis() 所以此时在 cb(); 执行的时候就要看这个this指向在哪里的
+ * */
+const jerry = {
+    sayThis: function () {
+        console.log(this); // 这里的 `this` 指向谁？
+    },
+
+    exec: function (cb) {
+        console.log(this);
+        cb();
+    },
+
+    render: function () {
+        const exec1 = this.exec;
+        exec1(()=>this.sayThis());
+    },
+}
+jerry.render();
+
+
+/**
+ * 这样调用报错 const cb = ()=>this.sayThis(); 里面的额this指的是exec里面的this 此时这么调用exec1();里面的this指向window
+ * 所以报错。
+ * */
+const jerry = {
+    sayThis: function () {
+        console.log(this); //
+    },
+
+    exec: function () {
+        console.log(this);
+        const cb = ()=>this.sayThis();
+        cb();
+    },
+
+    render: function () {
+        //debugger;
+        const exec1 = this.exec;
+        exec1();
+    },
+}
+jerry.render();
+
+
+
+const jerry = {
+    sayThis: function () {
+        console.log('sayThis:'+this); // window
+    },
+
+    exec: function (cb) {
+        console.log('exec:'+this); //window
+        cb()();
+    },
+
+    render: function () {
+        const exec1 = this.exec;
+        exec1(()=>{return this.sayThis});
+    },
+}
+jerry.render();

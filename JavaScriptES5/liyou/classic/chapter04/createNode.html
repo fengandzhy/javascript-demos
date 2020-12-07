@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #msg{
+            width:100px;
+            height:200px;
+            border: 1px solid black;
+        }
+    </style>
+    <script type="text/javascript">
+        window.onload=function(){
+            btn.onclick = function(){
+                var val = txt.value;
+                var e = document.createElement('div');
+                e.innerHTML = val;
+                msg.append(e);
+                txt.value = '';
+            }
+        }
+    </script>
+</head>
+<body>
+    <div id="msg"></div>
+    <textarea id="txt"></textarea>
+    <button id="btn">发送</button>
+</body>
+</html>
