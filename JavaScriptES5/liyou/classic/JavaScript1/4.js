@@ -41,3 +41,10 @@ array.forEach(function (value) {
     console.log(value);
 });
 
+function a ( b){
+    console.log(b);
+}
+
+
+
+

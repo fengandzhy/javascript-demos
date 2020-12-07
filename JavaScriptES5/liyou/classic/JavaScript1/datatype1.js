@@ -72,3 +72,98 @@ console.log(typeof a );
 console.log(undefined == null); //true
 console.log(undefined === null); //false 因为它们数据类型不相等
 
+console.log(a);
+var a = 0;
+if(true){
+	console.log(a);
+	a = 1;
+	function a(){};
+	a=21;
+	console.log(a);
+}
+console.log(a);
+
+
+console.log(a);
+var a = 0;
+function fn1(){
+	a =2;
+	var a =4;
+	console.log(a);
+}
+console.log(a);
+fn1();
+
+var a = 10;
+{
+	a =20;
+	var a = 30;
+	console.log(a);
+}
+console.log(a);
+
+var a = 10;
+{	
+	function a(){}
+	a =30;	
+	a = 50;
+}
+console.log(a);
+
+var a = 10;
+function fn(){	
+	function a(){}
+	a =30;	
+	a = 50;
+}
+console.log(a);
+
+debugger;
+console.log(a);
+var a = 10;
+{	
+	console.log(a);
+	//var a = function(){}
+	function a(){}
+	a =30;	
+	a = 50;
+	console.log(a);
+}
+console.log(a);
+
+
+var a = 10;
+{
+	console.log(a);
+	a =30;
+	function a(){}
+	//a();	
+	a = 20;	
+}
+console.log(a);
+
+console.log(a);
+a =20;
+
+
+
+
+
+console.log(a);
+{
+	console.log(a);
+	function a(){
+		console.log('a');
+	}
+}
+
+console.log(a);
+{
+	console.log(a);
+{
+	console.log(a);
+	function a(){
+		console.log('a');
+	}
+}
+}
