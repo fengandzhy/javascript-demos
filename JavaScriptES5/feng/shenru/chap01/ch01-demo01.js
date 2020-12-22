@@ -95,9 +95,13 @@ console.log(Function.__proto__);//ƒ () { [native code] }
 console.log(Function.__proto__.__proto__);//constructor属性指向Object
 console.log(Function.__proto__ === Function.prototype);//ture
 
+console.log(Function.__proto__.__proto__ === Object.prototype);//true
+
+
 function Person() {
 }
 var person = new Person();
+
 console.log(Person.__proto__);//ƒ () { [native code] }
 console.log(Person.__proto__.__proto__); //constructor属性指向Object
 console.log(Person.prototype === Person.__proto__);//false
@@ -106,8 +110,13 @@ console.log(Function.prototype === Person.__proto__);//true
 console.log(Function.prototype.__proto__ === Person.prototype.__proto__);//true
 console.log(Function.__proto__.__proto__ === Person.prototype.__proto__);//true
 
-
-
+function Person() {
+}
+var person = new Person();
+console.log(person.__proto__ === Person.prototype); //true person 是 Person 创建出来的
+console.log(Person.__proto__ === Function.prototype); // true Person 是 Function 创建出来的
+console.log(Function.__proto__ === Function.prototype); // 不能说Function 也是 Function 创造出来的 因为Function 是特殊的内置对象
+console.log(Function.__proto__.__proto__ === Object.prototype); // 但是Function.__proto__ 是Object创造出来的
 
 
 

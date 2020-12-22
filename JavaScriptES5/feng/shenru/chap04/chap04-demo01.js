@@ -272,9 +272,13 @@ if(true){
 /**
  * 以下的两个输出再次印证了这个道理, 当函数声明出现在代码块中，javascript 引擎不会将其作为函数声明处理，而是处理成函数表达式
  * 所以第一个时undefined,第二个是function
+ *
+ * 以上是两年前写的，不确切。当function 定义的函数出现在块级作用域时,
+ * 在块内部，它作为一个顶一顶额函数会提升到块级作用域顶端, 在块的外部，作为一个var 定义的变量函数 提升到外面
  * */
 console.log(fn1);//undefined
 {
+    console.log(fn1);//function
     function fn1(){
         console.log('abcd');
     }

@@ -5,9 +5,11 @@
  *      看见var 定义的变量就在 VO 上添加一个同名变量值为undefined, 如果发现VO上已经有了同名的变量时，不去改变任何值.
  *      看见function 定义的函数就在VO上添加一个同名变量,值为function, 如果发现VO上已经有了同名的变量时,修改它的值为function
  *      看见函数形参就在VO上添加一个同名变量,值为函数调用时传入的值, 如果发现VO上已经有了同名的变量时,看看其值，如果不是function 就改变它的值为传入的值
+ *      事实上,函数的形参它只会出现在函数作用域上,而对于函数的作用域来说,只有调用函数的时候才会进入预解析阶段.那么对于函数的形参来讲,当这段代码(位于函数中的),
+ *      进入预解析阶段就已经在VO上将它的值变成了传入的值
  * 3. 块级作用域的出现是为了方便那些由const和let定义的变量
  * 4. 当var 定义的变量出现在块级作用域时, 它会忽视块级作用域的存在,变量提升的规则不变
- * 5. 当function 定义的函数出现在块级作用域时, 在块内部，它作为一个顶一顶额函数会提升到块级作用域顶端, 在块的外部，作为一个var 定义的变量函数 提升到外面
+ * 5. 当function 定义的函数出现在块级作用域时, 在块内部，它作为一个函数会提升到块级作用域顶端, 在块的外部，作为一个var 定义的变量函数 提升到外面
  * 6. 因为函数形参不会出现在块级作用域,它只会出现在函数作用域,故不作讨论
  * */
 
@@ -65,20 +67,41 @@ fn1();
 
 /**
  * 当执行到 function a(){} 才会去改变作用域链上的值.
- * 正常情况下执行到a=10; 会去查找作用域链并改变作用域链上的值,但是此刻在块级作用域中有了函数声明,这样的话只有执行到function a(){} 才会去改变作用域上的值
+ * 正常情况下(没有这个块的话)执行到a=10; 会去查找作用域链并改变作用域链上的值,但是此刻在块级作用域中有了函数声明,这样的话只有执行到function a(){} 才会去改变作用域上的值
  * 也可以说a =10 在执行到function a(){} 方能体现出来
+ *
+ *
+ * 上面是几个月前写的了, 在没有这个块的话, 当程序执行到a=10的时候,它会去全局作用域的VO上去找a, 然后将其值改为10
+ * 但是现在有了这个块, 而且这个块里面还定义了一个函数, 那么在预解析阶段, 对于块外就相当于该 var a = function();
+ * 这也就是为什么第一个console.log(window.a,a); 会输出undefined, undefined
+ * 在块里面在function a(){}就部分相当于于let a 所以在前在后都不能在 重新定义a(var a 就是错误的)
+ * 另外在块里面 运行到 function a(){}之前 它作为一个函数会提升到块级作用域顶端 这也就是为什么第二个console.log(window.a,a); 会输出30, f a()
+ * 运行到function a(){} 它才会去更改全局的作用域.
+ *
+ * 就是说没有这个块{} 的话,本来是预解析阶段就会把全局作用域中的a 变成function, 但是有了个块，它拖后了这个进程, 要执行到块里面的function a(){}
+ * 它才会去更改原本要改变的全局作用域
+ * 那么同理 在function a(){} 之前加上a=10; 如果没有这个块，在运行到a=10;的时候就会去改变全局作用域,而现在有了这个块,所以只有运行到
+ * function a(){} 的时候才会体现出这种更改的效果, 但是运行到a=10; 它会改变块作用域里的a
+ * 同理在function a(){} 之后运行a = 20; 就没有效果了。因为程序不会再次运行到function a(){} 体现不出a = 20; 更改全局作用域的效果
+ * 除非在a = 20; 之后再来一个function a(){} 才能体现出更改全局作用域的效果
+ *
  * */
-console.log(window.a,a);
+console.log(window.a,a); //undefined, undefined
 var a = 30;
 {
-    console.log(window.a,a);
+    console.log(window.a,a); // 30, f a()
     a=10;
-    console.log(window.a,a);
+    console.log(window.a,a);// 30, 10
     function a(){}
-    console.log(window.a,a);
+    //let a = 2;
+    console.log(window.a,a); //10 ,10
     a = 20;
+    //function a(){}
 }
-console.log(window.a,a);
+console.log(window.a,a);//10,10
+
+
+
 
 /**
  * 第一个foo()报错，一个道理, 对于块的外部 那两个函数定义均相当于 var foo = function(){....}
@@ -126,7 +149,7 @@ console.log(window.a,a); // 10, 10 因为两个是同一个
  * */
 function b() {
     var aaa = 329;
-    console.log(aaa,bbb); //329,function
+    console.log(aaa,bbb); //329,undefined
     {
         console.log(aaa,bbb); //329,function
         function bbb() {
@@ -140,7 +163,7 @@ b();
 
 function b(aaa) {
     var aaa = 329;
-    console.log(aaa,bbb); //329,function
+    console.log(aaa,bbb); //329,undefined
     {
         console.log(aaa,bbb); //329,function
         function bbb() {
@@ -170,17 +193,17 @@ function c(aaa) {
     function b() {
         var aaa = 329;
         {
-            console.log(aaa);
+            console.log(aaa);//function
             aaa = 325;
-            console.log(aaa);
+            console.log(aaa);//325
 
             function aaa() {
             }
 
             aaa = 323;
-            console.log(aaa);
+            console.log(aaa); //323
         }
-        console.log(aaa);
+        console.log(aaa);//325
     }
     b();
 }

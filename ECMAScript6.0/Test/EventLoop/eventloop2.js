@@ -22,6 +22,7 @@ setTimeout(()=>{
 new Promise((resolve,reject)=>{
     console.log('Promise的');
     resolve();
+    //console.log('再來一個Promise的');
 }).then(()=>{
     console.log('then的');
 });

@@ -14,6 +14,9 @@ var value = 1;
 function foo() {
     console.log(value);
 }
+/**
+ * 词法作用域只跟函数的定义有关系，跟在哪运行没有关系,所以下面输出是2
+ * */
 function bar() {
     var value = 2;
     foo();
@@ -65,6 +68,7 @@ var o = {
         }
     }
 }
+
 o.b.fn();
 
 /**
@@ -141,6 +145,7 @@ try{
 
 f('abc');
 function f() {
+    console.log('I am here!');
     return scope;
 }
 var scope = "local scope";

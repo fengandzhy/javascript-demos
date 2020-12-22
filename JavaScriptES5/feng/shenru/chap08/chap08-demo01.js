@@ -89,15 +89,22 @@ var b =1;
 fn1(1,b);
 b=3;
 
+
+/**
+ * setTimeout 会返回一个id值,这个值是给clearTimeout()取消执行的
+ * */
 function aa() {
     debugger;
     var str = setTimeout(function() {
+        console.log('abcd');
         return "want-value";
-    }, 1000);
+    }, 0);
     console.log(str);
 }
 
 aa();
+
+
 
 
 var a = 1;

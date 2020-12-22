@@ -14,7 +14,20 @@ new Promise(resolve => {
 });
 
 
+function aa() {
+    var promise = new Promise(function(resolve, reject) {
+        console.log('aass');
+        window.setTimeout(function() {
+            resolve('want-value');
+        },1000);
+    });
+    console.log('abcd');
+    return promise;
+}
 
+aa().then(function(done){
+    console.log(done);
+});
 
 
 

@@ -57,7 +57,7 @@ checkscope();
 
 /**
  * 这段代码里一共有两个对象，我们分别给这两个对象取个名字：objA = { n: 1 }; objB = { n: 2 };
- * 在执行 a.x = a = { n: 2 }前a和b都指向objA；
+ * 在执行 a.x = a = { n: 2 }前,a和b都指向objA；
  * 点运算符优先级高，所以a.x=a={n:2}这句话先执行a.x，这里a指向objA，也就相当于把原先的代码替换成了objA.x = a =objB；
  * 然后执行赋值运算，从右往左，所以执行a = objB，a是个变量，它现在指向objB；
  * 再往左，执行赋值运算，objA.x = a，相当于objA.x = objB。此时objA被修改；
@@ -74,10 +74,11 @@ console.log(a,b);
 
 function f() { console.log('I am outside!'); }
 (function () {
-    f();
+    //f();
+    console.log(f);
     if (true) {
 // 重复声明一次函数f
-        function f() { console.log('I am inside!'); }
+        //function f() { console.log('I am inside!'); }
     }
 }());
 

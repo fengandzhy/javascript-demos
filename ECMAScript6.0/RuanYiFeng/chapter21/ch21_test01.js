@@ -5,6 +5,7 @@
 class Point{
 
 }
+
 typeof Point
 console.log(Point === Point.prototype.constructor);//true
 

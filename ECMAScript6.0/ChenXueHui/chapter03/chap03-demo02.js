@@ -44,7 +44,7 @@ new Promise((resolve,reject)=>{
     // setTimeout(()=>{
     //     console.log('Promise的');
     // },0);
-    console.log('Promise的');
+    console.log('Promise的'); //这里的代码其实跟全局的代码是一样的都是直接执行的
     resolve();
 }).then(()=>{
     console.log('then的');
