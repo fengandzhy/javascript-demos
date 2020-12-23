@@ -85,6 +85,8 @@ fn1();
  * 同理在function a(){} 之后运行a = 20; 就没有效果了。因为程序不会再次运行到function a(){} 体现不出a = 20; 更改全局作用域的效果
  * 除非在a = 20; 之后再来一个function a(){} 才能体现出更改全局作用域的效果
  *
+ * 以下这段代码只能在窗口运行,不能在这里直接运行. 因为这里是运行是node环境没有window这个变量
+ *
  * */
 console.log(window.a,a); //undefined, undefined
 var a = 30;
@@ -100,8 +102,37 @@ var a = 30;
 }
 console.log(window.a,a);//10,10
 
+/**
+ * 下面这个例子更好的诠释了定义在块中的函数变量提升是怎样的,
+ * 在预解析阶段
+ * 1. 在运行到块的外面function a(){} 相当于 var a = function(){}; 所以第一个 undefined, undefined
+ * 2. 在包运行到里面时, function a(){} 只会改变包里面的 a 而不会去改变全局作用域上的 a
+ * 在函数的运行阶段
+ *  只有运行到 function a(){} 会去改变全局的 a 也就是上面提到的变量延迟体现
+ * */
+console.log(window.a,a); //undefined, undefined
+var a = 30;
+if(true)
+{
+    console.log(window.a,a);// 30, f
+    function a(){}
+    console.log(window.a,a); //f ,f
+}
+console.log(window.a,a);//f,f
 
-
+/**
+ * 如果它执行不到function a(){} 由此可见把外面全局作用域里的a变成 f 是在运行阶段进行的而不是预解析阶段
+ * 定义在块里的函数只有在运行阶段运行到这个函数的定义之处时，才会去改变相应的作用域链上的变量
+ * */
+console.log(window.a,a); //undefined, undefined
+var a = 30;
+if(false)
+{
+    console.log(window.a,a);// 30, f
+    function a(){}
+    console.log(window.a,a); //f ,f
+}
+console.log(window.a,a);//f,f
 
 /**
  * 第一个foo()报错，一个道理, 对于块的外部 那两个函数定义均相当于 var foo = function(){....}
@@ -137,6 +168,12 @@ if(true){
 }
 console.log(window.a,a); // 10, 10 因为两个是同一个
 
+var a =20;
+if(true) {
+    var a = 30;
+    var a = 40;
+}
+console.log(window.a,a); // 10, 10 因为两个是同一个
 
 /**
  *
@@ -144,6 +181,7 @@ console.log(window.a,a); // 10, 10 因为两个是同一个
  * 1. 如果函数作用域没有参数则变量提升规则不变
  * 2. 如果函数作用域有参数且参数名跟块中的声明函数的名称不一致, 提升规则也不变
  * 3. 如果函数作用域有参数且参数名跟块中的声明函数的名称一致, 块中声明函数的这个变量不提升到父作用域中
+ *
  *
  *
  * */
@@ -160,6 +198,25 @@ function b() {
     console.log(aaa,bbb); //321,function
 }
 b();
+
+/**
+ * 函数作用域里已经有了 bbb 但这个bbb 不是参数传进来的, 仍然按照原有规则提升
+ * */
+function b() {
+    console.log(aaa,bbb); //undefined undefined 因为function bbb() {} 定义在块里面 对于块外面的就相当于 var bbb = function(){};
+    var aaa = 329;
+    var bbb = 455;
+    console.log(aaa,bbb); //329,455
+    {
+        console.log(aaa,bbb); //329,function
+        function bbb() {}
+        console.log(aaa,bbb); //329,function
+        aaa = 321;
+    }
+    console.log(aaa,bbb); //321,function
+}
+b();
+
 
 function b(aaa) {
     var aaa = 329;
@@ -185,6 +242,21 @@ function b(aaa,bbb) {
         console.log(aaa,bbb); //329,function
         aaa = 321;
     }
+    console.log(aaa,bbb); //321,469
+}
+b(123,469);
+
+
+function b(aaa,bbb) {
+    var aaa = 329;
+    console.log(aaa,bbb); //329,469
+    //{
+        console.log(aaa,bbb); //329,function
+        function bbb() {
+        }
+        console.log(aaa,bbb); //329,function
+        aaa = 321;
+    //}
     console.log(aaa,bbb); //321,469
 }
 b(123,469);
