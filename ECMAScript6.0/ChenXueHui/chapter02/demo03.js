@@ -40,14 +40,17 @@ function fn1(a){
    return a;
 }
 
+//返回ƒ fn2(){return 2;}
 fn1(function fn2(){
     return 2;
 });
 
+//返回是2
 fn1(function fn2(){
     return 2;
 }());
 
+//返回是2
 fn1(function fn2(){
     return 2;
 })();
@@ -63,6 +66,7 @@ fn1(function fn2(){
  * undefined写在形参是为了有些浏览器undefined是可以赋值的，为了让它不能赋值，形参写入undefined，实参传入undefined.
  * 在这个例子中，实参只传了两个值，那么第三个值自然就是undefined.
  *
+ * 下面的自执行函数就相当于把window和window里面的变量先设置了一遍.
  * */
 ;(function(window,mainModule,undefined){
     var _count=0;

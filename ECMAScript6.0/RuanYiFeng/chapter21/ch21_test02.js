@@ -33,3 +33,5 @@ point.fun1();
 console.log(Object.keys(Point.prototype));
 console.log(Object.getOwnPropertyNames(Point.prototype));
 
+
+

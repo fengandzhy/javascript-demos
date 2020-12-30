@@ -38,6 +38,7 @@ fn.call(1);
 fn.call('kaivon');
 fn.call(true);
 fn.call(obj);
+fn.call(fn);
 
 /**
  * fn.call(undefined); 只是让fn作用域里面的this指向了window,并不可以改变其他的地方的this指向

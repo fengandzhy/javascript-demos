@@ -251,6 +251,7 @@ class Logger {
 }
 
 const logger = new Logger();
+console.log(logger);
 const {printName}  = logger; //将logger里面的printName提取出来这个是解构赋值
 console.log(printName);
 printName();
@@ -274,8 +275,11 @@ class Logger {
     }
 }
 const logger = new Logger();
-const {printName}  = logger; //将logger里面的printName提取出来
-printName();
+logger.print('abc');
+console.log(logger);
+const {printName1}  = logger; //将logger里面的printName提取出来
+console.log(printName1);
+printName1();
 
 
 /**

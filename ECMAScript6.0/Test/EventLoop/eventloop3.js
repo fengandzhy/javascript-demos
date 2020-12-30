@@ -1,6 +1,7 @@
 
 /**
  * 这里吧setTimeout换成了readFile 道理也是一样
+ * readFile 也是在宏任务队列里面的
  * */
 const fs = require('fs');
 

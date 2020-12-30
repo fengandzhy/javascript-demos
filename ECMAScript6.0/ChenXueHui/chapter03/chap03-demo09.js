@@ -38,12 +38,15 @@
 /**
  * resolve 和 reject 都是函数 分别对应着Promise的两种不同的状态
  *
- * resolve 里的参数是then里的第一个函数的参数
+ * resolve 里的参数是then里的第一个函数的参数, reject就是第二个
+ * 执行了resolve就绝对不会执行reject 同理也是一样
  *
+ * then 里面是定义reslove 和reject 对象
  * */
 const p = new Promise((resolve,reject)=>{
     reject('状态变为失败，会调用then里的第二个参数');
-    //resolve('状态变为成功，会调用then里的第一个参数');
+    //console.log('abcd');
+    //resolve1('状态变为成功，会调用then里的第一个参数');
 
 }).then(
     (value)=>{

@@ -37,7 +37,7 @@ const addEvent=(function(){
         }
     }
 })();
-
+console.log(addEvent);
 
 
 
