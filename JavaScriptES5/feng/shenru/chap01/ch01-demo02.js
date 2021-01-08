@@ -71,7 +71,14 @@ console.log(typeof Person.__proto__); // function
 console.log(typeof person.__proto__.__proto__); // object
 
 
-
+/**
+ * Object.prototype 也就是对象 {constructor:f......} 是所有对象的原型对象, 它虽然能typeof 出 object 但是它绝对 不会 instanceof 出 Object
+ * 另外Javascript 中所有的对象都是基于这个对象创建出来的 也就是说所有的对象都能 instanceof Object 都返回true
+ *
+ * */
 var a = {name:'abc',age:'15'}
 console.log(a);//
-console.log(a.__proto__);//
+console.log(a.__proto__);//{constructor:f......}
+
+var b = {}
+console.log(b);
