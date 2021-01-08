@@ -9,7 +9,9 @@
 
 const [num,str,b] = [12,'kavin',true];
 const fn1=(v1,v2,v3)=>{
+    console.log(v1,v2,v3);
     v1=20,v2='geen',v3=false;
+    console.log(v1,v2,v3);
 }
 fn1(num,str,b);
 console.log(num,str,b);

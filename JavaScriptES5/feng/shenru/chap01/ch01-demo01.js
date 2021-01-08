@@ -57,13 +57,13 @@ console.log(person.constructor === person.__proto__.constructor);//true
 /**
  * 关于instanceof
  * 当a instanoeof A 是ture的时候，本质上就是说，a.__proto__ === A.prototype
- *
+ * 或者 a.__proto__.__proto__ === A.prototype
  * */
 function Person() {
 }
 var person = new Person();
 console.log(person instanceof Person);
-
+console.log(person instanceof Object);
 
 /**
  * 关于原型对象的原型对象
@@ -79,6 +79,16 @@ var person = new Person();
 console.log(person.__proto__.__proto__);
 console.log(person.__proto__.__proto__ === Object.prototype);//true
 console.log(person.__proto__ instanceof Object );//true
+console.log(person.__proto__.__proto__ instanceof Object );//false
+console.log(typeof person.__proto__.__proto__);//object
+console.log(typeof Function);//function
+console.log(person);//function
+console.log(person.__proto__.__proto__.__proto__);//null
+console.log(new Object());//{}
+console.log(Object); // f Object()
+console.log(Object instanceof Function); //true
+console.log(person.__proto__ instanceof Function );//false
+console.log(Object.__proto__ instanceof Function.prototype); //true
 
 
 /**
@@ -117,6 +127,9 @@ console.log(person.__proto__ === Person.prototype); //true person 是 Person 创
 console.log(Person.__proto__ === Function.prototype); // true Person 是 Function 创建出来的
 console.log(Function.__proto__ === Function.prototype); // 不能说Function 也是 Function 创造出来的 因为Function 是特殊的内置对象
 console.log(Function.__proto__.__proto__ === Object.prototype); // 但是Function.__proto__ 是Object创造出来的
+
+
+
 
 
 
