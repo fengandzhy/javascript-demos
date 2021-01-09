@@ -65,6 +65,9 @@ function fn1(){
 }
 fn1();
 
+
+
+
 /**
  * 当执行到 function a(){} 才会去改变作用域链上的值.
  * 正常情况下(没有这个块的话)执行到a=10; 会去查找作用域链并改变作用域链上的值,但是此刻在块级作用域中有了函数声明,这样的话只有执行到function a(){} 才会去改变作用域上的值
@@ -120,6 +123,10 @@ if(true)
 }
 console.log(window.a,a);//f,f
 
+
+
+
+
 /**
  * 如果它执行不到function a(){} 由此可见把外面全局作用域里的a变成 f 是在运行阶段进行的而不是预解析阶段
  * 定义在块里的函数只有在运行阶段运行到这个函数的定义之处时，才会去改变相应的作用域链上的变量
@@ -128,11 +135,11 @@ console.log(window.a,a); //undefined, undefined
 var a = 30;
 if(false)
 {
-    console.log(window.a,a);// 30, f
+    console.log(window.a,a);
     function a(){}
-    console.log(window.a,a); //f ,f
+    console.log(window.a,a);
 }
-console.log(window.a,a);//f,f
+console.log(window.a,a);//30,30
 
 /**
  * 第一个foo()报错，一个道理, 对于块的外部 那两个函数定义均相当于 var foo = function(){....}

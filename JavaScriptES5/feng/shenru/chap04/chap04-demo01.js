@@ -182,10 +182,10 @@ console.log(a);
  * 在预解析的时候,VO上的a已经是20了而不是undefined,因为此刻a是形参
  * */
 function foo3(a){
-    console.log(a);
+    console.log(a); // f a(){}
     var a = 10;
     function a(){}
-    console.log(a);
+    console.log(a); //10
 }
 foo3(20);
 

@@ -71,7 +71,11 @@ console.log(a,b);
 
 
 
-
+/**
+ * 以下是个自执行函数
+ * 当if 里面f 不注销时输出的是 undefined
+ * 当 if 里面f 注销时输出的是 外面的哪个函数
+ * */
 function f() { console.log('I am outside!'); }
 (function () {
     //f();
@@ -117,7 +121,7 @@ var foo = {
 
 
 (foo.bar)
-
+//console.log(foo.bar);
 
 
 function foo() {
