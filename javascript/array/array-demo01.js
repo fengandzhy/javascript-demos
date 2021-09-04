@@ -1,10 +1,12 @@
 
-
-var a = [5,1];
-var b = new Array(5,1);
+/**
+ * 1. 定义数组的方法
+ * */
+var a = [5,1,'abc'];
+var b = new Array(5,1,'abc');
 console.log(a==b);
-console.log(typeof a);
-console.log(typeof b);
+console.log(a);
+console.log(b);
 
 var c = 'abc';
 var d = new String('abc');
