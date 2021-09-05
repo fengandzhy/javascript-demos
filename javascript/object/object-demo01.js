@@ -12,3 +12,4 @@ function fn1(val1,val2){
 
 var f1 = new fn1('a','b');
 console.log(f1);
+
