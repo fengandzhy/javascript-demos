@@ -5,8 +5,6 @@
 var a = [5,1,'abc'];
 var b = new Array(5,1,'abc');
 console.log(a==b);
-console.log(a);
-console.log(b);
 
 var c = 'abc';
 var d = new String('abc');
