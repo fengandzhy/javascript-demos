@@ -7,7 +7,7 @@
  * 3. arr.concat() 没有传递参数，那么只是复制当前数组并返回副本，原数组不变；
  * 传递一个元素（数组）或多个元素（数组）,会将其合并到arr中，返回新数组，原数组不变
  *
- *
+ * 4. 如何根据一个json对象的某个属性排序,请参考本例
  * */
 
 var arr1 = [1,2,3,'red','blue'];
@@ -24,3 +24,22 @@ var colors = ['red','blue','green'];
 var colors1 = colors.concat('gray',['a','green']);
 console.log(colors);
 console.log(colors1);
+
+const inventors = [
+    { first: 'Albert', last: 'Einstein', year: 1879, passed: 1955 },
+    { first: 'Albert1', last: 'Einstein2', year: 1873, passed: 1958 },
+    { first: 'Albert2', last: 'Einstein1', year: 1872, passed: 1955 },
+    { first: 'Hanna', last: 'Hammarström', year: 1529, passed: 1909 }
+];
+
+const birthdate = inventors.sort((inventora, inventorb) => (inventora.year - inventorb.year));
+console.log(birthdate);
+
+
+const sortName = inventors.sort((a, b) => {
+    return (a.last > b.last) ? 1 : -1;
+})
+console.log(sortName);
+
+
+
