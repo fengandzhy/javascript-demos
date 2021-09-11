@@ -40,3 +40,8 @@ x = ['Runoob', 1];    // 运行正常
 console.log(x[0]);    // 输出 Runoob
 console.log(x[1]);    // 输出 1
 
+//枚举
+enum Color {Red, Green, Blue};
+let c: Color = Color.Blue;
+console.log(c);    // 输出 2
+

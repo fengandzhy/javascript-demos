@@ -29,7 +29,18 @@ var arr = [1, 2];
 var arr1 = [1, 2];
 console.log(arr);
 console.log(arr1);
+//元组
 var x;
 x = ['Runoob', 1]; // 运行正常
 console.log(x[0]); // 输出 Runoob
-console.log(x[1]); // 输出 Runoob
+console.log(x[1]); // 输出 1
+//枚举
+var Color;
+(function (Color) {
+    Color[Color["Red"] = 0] = "Red";
+    Color[Color["Green"] = 1] = "Green";
+    Color[Color["Blue"] = 2] = "Blue";
+})(Color || (Color = {}));
+;
+var c = Color.Blue;
+console.log(c); // 输出 2
