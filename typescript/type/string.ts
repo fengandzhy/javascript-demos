@@ -1,3 +1,6 @@
+/**
+ *
+ * */
 {
     let name: string = 'Runoob';
     let years: number = 5;
