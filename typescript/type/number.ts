@@ -4,6 +4,13 @@
  *
  * 2. 如果是const 不能用 const 变量名:类型, 应该直接const 变量名=值
  *
+ * 3. 在js文件当中变量类型不严格, 例如如下代码 可行分别输出number和string 但是在typescript中这样就会报错.
+ *  a已经被赋值成了'12'它是string类型的bunegn zai 赋值一个 number
+ *      let a = '12';
+ *      console.log(typeof a);
+ *      a = 3;
+ *      console.log(typeof a);
+ *
  * */
 
 {
