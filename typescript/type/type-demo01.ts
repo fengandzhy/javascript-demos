@@ -45,3 +45,6 @@ enum Color {Red, Green, Blue};
 let c: Color = Color.Blue;
 console.log(c);    // 输出 2
 
+var str = '1'
+var str2:number;   //str、str2 是 string 类型
+console.log(typeof str2)
