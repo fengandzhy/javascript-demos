@@ -1,16 +1,24 @@
 /**
- * 1. ch是checkscope new出来的, 但是在checkscope里面没有东西绑定到this上, 所以ch输出就是checkscope {} 里面没有任何属性
+ * 1. 对于ES5来说在一个变量里定义函数你只能这么写fn:function(), 对于ES6来说, fn() 就可以这么写，调用还是一样的调用 o1.b.fn();
  * */
-function checkscope(){
-    var scope = 'local scope';
-    function f(){
-        console.log('abc');
-        return scope;
-    }
-    return f();
-}
 
-var ch = new checkscope();
-console.log(ch);
-var a = checkscope();
-console.log(a);
+var o = {
+    b:{
+        a:11,
+        fn:function(){
+            console.log("We are here");
+        }
+    }
+}
+o.b.fn();
+
+var o1 = {
+    b:{
+        a:11,
+        fn(){
+            console.log("We are here");
+        }
+    }
+}
+o1.b.fn();
+
