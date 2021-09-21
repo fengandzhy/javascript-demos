@@ -23,3 +23,5 @@ if(undefined){
 if(null){
     console.log('789');
 }
+let next ;
+console.log(next);

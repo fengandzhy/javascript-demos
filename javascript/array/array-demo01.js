@@ -4,7 +4,7 @@
  *
  * 2. 在js中相等的只能值字面量, 两个object的东西永远不会相等. 返回会是false
  * 例如 d和e 这连个就是object var d = new String('abc');  var e = new String('abc')
- * 所以 console.log(d==e);
+ * 所以 console.log(d==e); 是false
  * 另外 c 就是字面量 var c = 'abc' 当执行console.log(typeof c );返回为string
  * 当一方有字面量的情况下 这种表达式的返回console.log(c==d); 才有可能是true
  *
