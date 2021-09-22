@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>dom</title>
+</head>
+<script>
+    /**
+     * 1. 注意, 这里的ipt不是数组 它是 HTMLCollection
+     * */
+    window.onload=function(){
+        var ipt = document.getElementsByTagName('input');
+        console.log(ipt);
+        for(var i in ipt){
+            console.log(i);
+        }
+    }
+</script>
+<body>
+<input><input><input>
+</body>
+</html>
