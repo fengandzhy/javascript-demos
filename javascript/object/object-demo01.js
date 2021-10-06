@@ -19,7 +19,8 @@ f1.fun();
 /**
  * 2. ch是checkscope new出来的, 但是在checkscope里面没有东西绑定到this上, 所以ch输出就是checkscope {} 里面没有任何属性
  *
- * 3.如果想运行 checkscope.f(); 那么这个函数f必须定义在checkscope的原型对象上.
+ * 3.如果想运行 checkscope.f(); 那么这个函数f必须定义在checkscope的原型对象上. 或者直接在checkscope上定义
+ * checkscopt.c = function(){}
  *
  *
  * */
@@ -43,3 +44,9 @@ checkscope.__proto__.f = function(){
 }
 
 checkscope.f();
+
+checkscope.c = function (){
+    console.log('Hello World');
+}
+
+checkscope.c();
