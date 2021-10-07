@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>event</title>
+</head>
+<style>
+    #div1{
+        height: 100px;
+        width:100px;
+        border: 1px solid blue;
+    }
+</style>
+<script>
+    /**
+     * 1. 事件的函数, 如果你写一个参数，那么这个参数必然就是$event
+     * */
+    window.onload=function(){
+        div1.onclick=function (v){
+            console.log(v);
+        }
+    }
+</script>
+<body>
+    <div id="div1"></div>
+</body>
+</html>
