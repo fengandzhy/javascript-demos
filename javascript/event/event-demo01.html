@@ -16,12 +16,16 @@
      * 1. 事件的函数, 如果你写一个参数，那么这个参数必然就是$event
      * */
     window.onload=function(){
-        div1.onclick=function (v){
-            console.log(v);
+        div1.onclick=function (e){
+            console.log(e);
         }
+    }
+    function clickHandler(e){
+        e.preventDefault();
     }
 </script>
 <body>
     <div id="div1"></div>
+    <button onclick="clickHandler(event)">屠龙宝刀点击就送</button>
 </body>
 </html>
