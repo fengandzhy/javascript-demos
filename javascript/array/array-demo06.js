@@ -23,7 +23,7 @@ console.log(array1);
 
 
 var colors = ['red','blue','green'];
-colors.splice(1,0,'gray'); //[]
+colors.splice(2,0,'gray'); //[]
 console.log(colors);
 
 var colors = ["red", "gray", "blue", "green"]
