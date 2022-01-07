@@ -15,6 +15,13 @@ var arr = colors.splice(1,1);
 console.log(colors);
 console.log(arr);
 
+const array = [1,2,3,4,5,6,7,8,9];
+const array1 = array.splice(3,4);
+console.log(array);
+console.log(array1);
+
+
+
 var colors = ['red','blue','green'];
 colors.splice(1,0,'gray'); //[]
 console.log(colors);
