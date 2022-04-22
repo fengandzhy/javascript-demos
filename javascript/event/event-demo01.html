@@ -10,22 +10,43 @@
         width:100px;
         border: 1px solid blue;
     }
+
+    #div2{
+        height: 100px;
+        width:100px;
+        border: 1px solid blue;
+    }
 </style>
 <script>
     /**
      * 1. 事件的函数, 如果你写一个参数，那么这个参数必然就是$event
      * */
     window.onload=function(){
+        let div1=document.getElementById('div1')
         div1.onclick=function (e){
+            console.log('div1');
             console.log(e);
         }
+
+        let div2=document.getElementById('div2')
+        div2.addEventListener('click',function(e){
+            console.log('div2');
+            console.log(e);
+        })
     }
     function clickHandler(e){
+        console.log(e);
         e.preventDefault();
+    }
+    function clickHandler1(){
+        console.log(event);
+        event.preventDefault();
     }
 </script>
 <body>
     <div id="div1"></div>
+    <div id="div2"></div>
     <button onclick="clickHandler(event)">屠龙宝刀点击就送</button>
+    <button onclick="clickHandler1()">屠龙宝刀点击就送</button>
 </body>
 </html>
