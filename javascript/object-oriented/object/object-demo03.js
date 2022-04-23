@@ -21,6 +21,8 @@ Object.defineProperty(person,'age',{
     }
 });
 
+console.log(person);
+
 console.log(Object.keys(person));
 
 console.log(person.age);

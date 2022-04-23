@@ -31,6 +31,7 @@ let model={
 
 model.d.name='王五';
 console.log(model.d);
+console.log(stu);
 
 let model1 = {
     stu
