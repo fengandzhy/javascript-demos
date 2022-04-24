@@ -4,6 +4,10 @@ let person = {
     sex:'男',
 };
 
+/**
+ * 这里的get/set属性名都是确定的
+ * 
+ * */
 Object.defineProperty(person,'age',{
     // value:18,
     // enumerable:true, //控制属性是否可以枚举，默认值是false 可枚举的意思就是说可以被遍历出来
