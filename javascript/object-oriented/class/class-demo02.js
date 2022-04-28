@@ -15,3 +15,5 @@ class Point{
 let point = new Point(2,3);
 console.log(point);
 
+let p = new Point();
+console.log(p);
