@@ -4,8 +4,6 @@
  *
  * */
 function Person(){}
-var person = new Person();
-
 Person.prototype.name='May';
 var person1 = new Person();
 var person2 = new Person();

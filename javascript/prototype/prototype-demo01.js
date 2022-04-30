@@ -13,8 +13,10 @@
  * */
 function Person(){}
 var person = new Person();
+console.log(person);
 console.log(person.__proto__);
 console.log(Person.prototype);
 console.log(Person.prototype === person.__proto__);
 console.log(Object.getPrototypeOf(person) === Person.prototype);
 console.log(Person);
+
