@@ -13,3 +13,4 @@ console.log(Object.prototype); // {}
 console.log(Object); // [Function: Object]
 console.log(Object.__proto__);
 console.log(Object.__proto__.__proto__);
+
