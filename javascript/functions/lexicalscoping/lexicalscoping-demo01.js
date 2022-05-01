@@ -15,32 +15,7 @@ bar();
 
 
 
-var a = 10;
-var o = {
-    b:{
-        a:11,
-        fn:function(){
-            console.log(a);
-        }
-    }
-}
 
-o.b.fn(); // 10
-
-var a = 10;
-var o = {
-    b:{
-        a:11,
-        fn:function(){
-            var a = 11;
-            function f1(){
-                console.log(a);
-            }
-            f1();
-        }
-    }
-}
-o.b.fn();
 
 (function(){
     e="default";
