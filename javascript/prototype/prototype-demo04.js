@@ -9,8 +9,8 @@ function Person() {
 var person = new Person();
 console.log(person instanceof Person); //true
 console.log(person instanceof Object); //true
-console.log(Object.prototype); // {}
-console.log(Object); // [Function: Object]
-console.log(Object.__proto__);
-console.log(Object.__proto__.__proto__);
+console.log(Object instanceof Function);//true
+console.log(Person instanceof Function);//true
+console.log(Function instanceof Object);//true
+console.log(Person instanceof Object);//true
 
