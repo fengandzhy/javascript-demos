@@ -22,7 +22,9 @@ bar();
     try{
         throw "test";
     }catch(e){ // 这里的catch 是一个函数
-        var e,x=123;
+        // var e,x=123; // 这里的e 并没有被赋值
+        var e;
+        var x = 123;
         console.log(e); //test
         console.log(delete e); //false
         e=456;
@@ -32,3 +34,27 @@ bar();
     console.log(e); //default
     console.log(window.e); //undefined
 })();
+
+function fn(){
+    function fn1(e){
+        var e,x=123;
+    }
+    fn1(3);
+    console.log(x);
+}
+fn();
+console.log(b);
+
+function foo(){
+    e='aaa'
+    try{
+        throw new Error('this is an error')
+    }catch(e){
+        console.log(e);
+        var x = 3;
+    }
+    console.log(x);
+    console.log(e);
+    console.log(window.e);
+}
+foo();
