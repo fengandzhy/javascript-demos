@@ -5,3 +5,8 @@
 let str = 'visit Medium! and Medium!';
 let res = str.replace('Medium','Dev.to');
 console.log(res);
+
+str = 'visit\r\n Medium!\n and\n Medium!';
+//console.log(str.replace('\n','</br>'));
+
+console.log(str.replace(/[\r\n]/g, '</br>'));

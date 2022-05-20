@@ -19,3 +19,6 @@ function fn(a,b){
 setTimeout(fn,600,2,6);
 
 setTimeout(fn(2,6),600);
+
+const a = new Array();
+console.log(typeof a );
