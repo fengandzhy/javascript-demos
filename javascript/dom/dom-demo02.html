@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+    <title>Document</title>
+    <style>
+        .p {
+            width: 300px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+<p class="p" id="word">
+</p>
+<script>
+    const text = "一个人出现在远处的小路上，他猫着腰，步履蹒跚，每迈出一步都显得那么的吃力，那么的艰苦。终于在路旁的土塄上坐了下来。";
+    $("#word").text(text); // 给p标签赋值
+    const word = document.getElementById('word');
+    //  const word = $("#word")[0];  // 或通过jQuery进行获取
+    if (word.scrollWidth > word.offsetWidth) { // 判断文本内容的宽度是否超过了元素的宽度
+        $("#word").attr("title", text);
+    }
+</script>
+</body>
+</html>

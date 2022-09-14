@@ -8,3 +8,6 @@ let res = str.substring(0,6);
 console.log(res);
 res = str.substring(1,6);
 console.log(res);
+res = str.substring(1);
+console.log(res);
+console.log(str.indexOf('Medium!'));
