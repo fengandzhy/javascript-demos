@@ -23,6 +23,10 @@ console.log(typeof(undefined));
  * true == 1
  * false == 0
  *
+ * function 的 length 就是它的参数长度.
+ * 形参: 形式上的参数.
+ * 实参: 实际的参数.
+ *
  * */
 let a = [5,1,'abc'];
 let b = new Array(5,1,'abc');
@@ -59,3 +63,10 @@ if(1){
 if(2){
     console.log('cccc'); //执行
 }
+
+function show(a,b){}
+console.log(show.length); //2
+
+console.log(undefined == null); // true
+console.log(undefined === null); // false
+

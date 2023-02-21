@@ -28,3 +28,5 @@ var str = '0';
 console.log(obj === str); // false
 console.log(typeof obj);
 console.log(typeof str);
+
+
