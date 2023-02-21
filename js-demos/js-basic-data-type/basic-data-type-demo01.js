@@ -18,4 +18,44 @@ console.log(typeof(true));
 console.log(typeof(undefined));
 
 
+/**
+ * js 中只有字面量才能相等==, 任何对象都是不可能相等.
+ * true == 1
+ * false == 0
+ *
+ * */
+let a = [5,1,'abc'];
+let b = new Array(5,1,'abc');
+console.log(a==b); // false
 
+let c = 'abc';
+let d = new String('abc');
+let e = new String('abc')
+console.log(c==d); //true 字面量可以相等
+console.log(d==e); //false
+
+let obj = new String('0');
+let str = '0';
+console.log(obj === str); // false
+console.log(typeof obj); // object
+console.log(typeof str); // str
+
+let f = new Number(1);
+let g = new Number(2);
+console.log(f == g );// false
+
+console.log(false == 0); //true
+console.log(true == 1); //true
+console.log(true == 2); //false
+
+if(0){
+    console.log('aaaa'); // 不执行
+}
+
+if(1){
+    console.log('bbbb'); // 执行
+}
+
+if(2){
+    console.log('cccc'); //执行
+}
