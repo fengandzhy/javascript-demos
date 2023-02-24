@@ -7,15 +7,24 @@
 <body>
     <button id="open">Open Google</button>
     <button id="close">Close</button>
+    <button id="href">Bai du</button>
+    <button id="reload">Refresh</button>
 </body>
 <script type="text/javascript">
     console.log(window);
+    console.log(location);
     window.onload = function(){ // 当所有的元素都 load 了之后.
         document.getElementById('open').onclick = function(){
             open('http://www.google.com');
         };
         document.getElementById('close').onclick = function(){
             close();
+        }
+        document.getElementById('href').onclick = function(){
+            location.href="http://www.baidu.com";
+        }
+        document.getElementById('reload').onclick = function(){
+            location.reload();
         }
     }
 </script>
