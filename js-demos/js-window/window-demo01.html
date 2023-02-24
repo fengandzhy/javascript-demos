@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Window 里面的函数</title>
+</head>
+<body>
+    <button id="open">Open Google</button>
+    <button id="close">Close</button>
+</body>
+<script type="text/javascript">
+    console.log(window);
+    window.onload = function(){ // 当所有的元素都 load 了之后.
+        document.getElementById('open').onclick = function(){
+            open('http://www.google.com');
+        };
+        document.getElementById('close').onclick = function(){
+            close();
+        }
+    }
+</script>
+</html>
