@@ -21,4 +21,9 @@
     console.log(arr2);
     // arr2.push(3);
 
+    const arr3:number[] = new Array();
+    arr3.push(1);
+    arr3.push(2);
+    arr3.push(3);
+    console.log(arr3);
 }
