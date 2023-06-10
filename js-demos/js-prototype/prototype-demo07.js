@@ -12,20 +12,22 @@
  * */
 function Person(){}
 var person = new Person();
-console.log(person); // {}
-console.log(person.__proto__); // {}
+console.log(person);
+console.log(person.__proto__);
 console.log(person.__proto__.__proto__);
 console.log(person.constructor);
+console.log(person.__proto__.constructor);
+console.log(person.__proto__.__proto__.constructor);
 
-console.log(Person);
-console.log(Person instanceof Function);
-console.log(Person instanceof Object);
-console.log(Person.__proto__ === Function.prototype);
-console.log(Person.__proto__.__proto__ === Object.prototype);
-console.log(Person.constructor === Function);
-console.log(Person.__proto__.constructor === Object);
-console.log(Function.constructor === Function);
-console.log(Function.__proto__.__proto__.constructor === Object);
+// console.log(Person);
+// console.log(Person instanceof Function);
+// console.log(Person instanceof Object);
+// console.log(Person.__proto__ === Function.prototype);
+// console.log(Person.__proto__.__proto__ === Object.prototype);
+// console.log(Person.constructor === Function);
+// console.log(Person.__proto__.constructor === Object);
+// console.log(Function.constructor === Function);
+// console.log(Function.__proto__.__proto__.constructor === Object);
 // console.log(Object); //ƒ Object()
 // console.log(Object.__proto__); //ƒ Object()
 // console.log(Object.prototype); //ƒ Object()
