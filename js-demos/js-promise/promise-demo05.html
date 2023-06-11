@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../lib/jquery.js"></script>
+</head>
+<body>
+
+</body>
+<script>
+
+    const pro1 = new Promise((resolve, reject) => {
+        resolve('success');
+    }).then((res) => { // 正常情况下，只有上面执行了resolve 才会来到这里, 这里的res 就是上面resolve 的入参
+        console.log(res);
+        return 'success again';
+    }).then((res) => { // 同样, 这里的res 是上面的那个 return
+        console.log(res);
+        return 'success again and again';
+    }).then((res) => {
+        return res;
+    });
+
+
+</script>
+</html>
