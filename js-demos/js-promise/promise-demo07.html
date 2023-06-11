@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../lib/jquery.js"></script>
+</head>
+<body>
+
+</body>
+<script>
+
+    const pro1 = new Promise((resolve, reject) => {
+        resolve('success');
+    }).then((res) => { // 正常情况下，只有上面执行了resolve 才会来到这里, 这里的res 就是上面resolve 的入参
+        console.log(res);
+        return new Promise((resolve, reject) => {
+            reject('failed in another promise'); // 如果返回一个promise对象，如果这里执行的reject 则直接到catch, 下面两个then都不执行了。
+        });
+    }).then((res) => {
+        console.log(res);
+        return 'success again and again';
+    }).then((res) => {
+        return res;
+    }).catch((err) => { // 当上面一个then执行错误，就会掉这里来，因为每一个then都是一个promise对象, 但是它们没有处理error的能力，所以到了最后一个then的catch这里
+        console.log(err);
+    });
+
+
+</script>
+</html>

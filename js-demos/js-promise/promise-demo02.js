@@ -1,6 +1,10 @@
 const p = new Promise((resolve, reject) => {
-    resolve('success');
+    // resolve('success');
+    console.log('ABC');
+    return 'd'
 });
+
+console.log(p);
 
 const t = p.then((value) => {
     // 成功执行这个方法会把t 的状态变成 fulfilled, 但是如果这个方法没有被成功执行,它会把t 的状态变成 rejected, 然后会执行t 的then里面第二个方法
