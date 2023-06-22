@@ -15,7 +15,7 @@
         console.log(a); // 这里调用reject 或者 方法出错，或者抛出 Error, 才会跑到then里面的第二个方法, 但如果这个方法体成功执行它不会跑到then里面去, 必须调用resolve
     });
 
-    pro1.then(res => {
+    const prop2 = pro1.then(res => {
         console.log(res);
     }, err => { // 正常情况下, 它上面执行了reject, 如果then里面有第二个函数, 它就会执行第二个函数, 而不会去执行catch,
         console.log(err);
