@@ -6,8 +6,10 @@ const p = new Promise((resolve, reject) => {
 console.log(p);
 /**
  * catch 方法， 这个方法的参数也是一个函数，当这个函数只有在promise 对象为 rejected 的时候才被执行，
- *
+ * 这个方法也返回一个promise 同样也是 如果catch里面的函数被正确执行 p1的对象为fulfilled
  * */
-p.catch((err) => {
+const p1 = p.catch((err) => {
     console.log('In the catch method.', err);
 });
+
+console.log(p1);

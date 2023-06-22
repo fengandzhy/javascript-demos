@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+    const pro1 = new Promise((resolve, reject) => {
+        console.log(a); // 方法出错 pro1的状态就为rejected
+    });
+
+    const prop2 = pro1.then(resp => {
+        console.log('success');
+    }, err => {
+        console.log('failure'); // pro1为rejected的时候, 会来到这里, 如果这里被正常执行的话prop2 的状态就是fulfilled, 如果这里没有被正确执行, prop2 的状态是rejected
+    });
+    console.log(prop2);
+
+    const prop3 = prop2.then(resp => {
+        console.log('pro2 success');
+    }, err => {
+        console.log('pro2 failure');
+    });
+</script>
+</body>
+</html>
