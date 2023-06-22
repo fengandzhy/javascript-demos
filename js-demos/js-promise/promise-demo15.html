@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+    const prop1 = new Promise((resolve, reject) => {
+        setTimeout(() => {
+            reject('prop1 resolve');
+        }, 3000);
+    });
+
+    const prop2 = new Promise((resolve, reject) => {
+        setTimeout(() => {
+            reject('prop2 resolve');
+        }, 2000);
+    });
+
+    const prop3 = new Promise((resolve, reject) => {
+        setTimeout(() => {
+            reject('prop3 resolve');
+        }, 5000);
+    });
+
+    /**
+     * Promise.allSettled 返回一个promise 对象p, 它的状态只要prop1, prop2, prop3 都完成了, 无论它们是fulfilled 还是 rejected
+     * p 的状态都是fulfilled
+     *
+     * */
+    const p = Promise.allSettled([prop1, prop2, prop3])
+        .then(() =>{
+            console.log('resolve');
+        }).catch(() =>{
+            console.log('rejected');
+        });
+
+    setTimeout(() => {
+        console.log(p);
+    }, 7000);
+</script>
+</body>
+</html>
