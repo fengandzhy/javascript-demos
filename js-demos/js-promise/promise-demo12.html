@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+    const pro1 = new Promise((resolve, reject) => {
+        resolve('success')
+    });
+
+    const prop2 = pro1.then(resp => {
+        return new Promise((resolve, reject) => {
+            // resolve('success in another promise');
+            reject('failed in another promise');
+        });
+    }, () => {
+        console.log('failure');
+    });
+
+    /**
+     * finally 方法会返回一个promise对象, 无论 prop2 的状态是 rejected 还是 fulfilled, 它都会执行 finally方法,
+     * 但如果prop2的状态是 fulfilled 成功执行finally里面的方法 那么 prop3的状态也是 fulfilled, 如果不成功执行finally 里面的方法 prop3的状态就是rejected
+     * 如果prop2的状态是rejected 那么prop3的状态也会是 rejected
+     * */
+    const prop3 = prop2.finally(() => {
+       console.log('In the finally');
+    });
+
+    console.log(prop3);
+</script>
+</body>
+</html>
