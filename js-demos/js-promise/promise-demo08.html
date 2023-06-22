@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../lib/jquery.js"></script>
+</head>
+<body>
+
+</body>
+<script>
+
+    const pro1 = new Promise((resolve, reject) => {
+        //reject('failure');
+        console.log(a); // 这里调用reject 或者 方法出错，或者抛出 Error, 才会跑到then里面的第二个方法, 但如果这个方法体成功执行它不会跑到then里面去, 必须调用resolve
+    });
+
+    pro1.then(res => {
+        console.log(res);
+    }, err => { // 正常情况下, 它上面执行了reject, 如果then里面有第二个函数, 它就会执行第二个函数, 而不会去执行catch,
+        console.log(err);
+        throw new Error('My bad.'); // 如果在这里抛出Error 则会执行下面的catch
+    }).catch(err => {
+        console.log('In the catch,', err);
+    })
+
+
+</script>
+</html>
