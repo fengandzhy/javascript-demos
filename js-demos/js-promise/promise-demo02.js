@@ -11,7 +11,7 @@ const t = p.then((value) => {
     console.log('p success is', value);
     return value; // 这里的return 值就是 t 的then 里面第一个函数的传入参数.
 }, (err) => {
-    // 当promise对象的桩体是rejected 的时候执行, 形参err是reject 传进来的.
+    // 当promise对象的状态是rejected 的时候执行, 形参err是reject 传进来的.
     console.log('p error is', err);
 });
 

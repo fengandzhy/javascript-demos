@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+    const pro1 = new Promise((resolve, reject) => {
+        console.log(a); // 方法出错 pro1的状态就为rejected
+    });
+    console.log(pro1);
+
+    const pro2 = new Promise((resolve, reject) => {
+        reject('reject'); // 调用reject pro1的状态就为rejected
+    });
+    console.log(pro2);
+
+    const pro3 = new Promise((resolve, reject) => {
+        throw new Error('error'); // 抛出异常 pro1的状态就为rejected
+    });
+    console.log(pro3);
+
+    const pro4 = new Promise((resolve, reject) => {
+        console.log('We are here!!'); // 正确执行方法 pro1的状态就为pending
+    });
+    console.log(pro4);
+
+    const pro5 = new Promise((resolve, reject) => {
+        resolve('success'); // 执行resolve pro1的状态就为fulfilled
+    });
+    console.log(pro5);
+</script>
+</body>
+</html>
