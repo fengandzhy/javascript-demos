@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+    const prop1 = new Promise((resolve, reject) => {
+        setTimeout(() => {
+            resolve('prop1 resolve');
+        }, 3000);
+    });
+
+    const prop2 = new Promise((resolve, reject) => {
+        setTimeout(() => {
+            resolve('prop2 resolve');
+        }, 2000);
+    });
+
+    const prop3 = new Promise((resolve, reject) => {
+        setTimeout(() => {
+            resolve('prop3 resolve');
+        }, 5000);
+    });
+
+    /**
+     * Promise.all 返回一个promise 对象p, 它的状态是有 prop1, prop2, prop3 共同决定, 当它们的状态都为 fulfilled 的时候, p就是fulfilled
+     * 但只要有一个是 rejected 那么p 就是 rejected
+     * */
+    const p = Promise.all([prop1, prop2, prop3])
+    .then(() =>{
+        console.log('resolve');
+    }).catch(() =>{
+        console.log('rejected');
+    });
+
+    setTimeout(() => {
+        console.log(p);
+    }, 7000);
+</script>
+</body>
+</html>
