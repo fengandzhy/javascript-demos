@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    /**
+     * 执行async标记的函数后, 返回一个promise对象, 如果这个函数被正确执行, 这个promise对象的状态就是fulfilled
+     * 如果这个函数没有被正确执行, 或者抛出错误, 这个promise对象就是 rejected
+     * 另外如果这个函数有返回值, 这个值就包裹在promise里面
+     *
+     * */
+    async function foo(){
+        console.log('ABC');
+        return 3;
+    }
+    console.log(foo()); // 执行async标记的函数后, 返回一个promise对象
+
+    const fn1 = async function(){
+        console.log('BCD');
+    }
+    console.log(fn1());
+
+    const prop1 = (async () => {
+        console.log('DEF');
+    })(); // 箭头函数的自执行模式
+    console.log(prop1);
+
+    class Person {
+        async eat(){
+            console.log('BDG');
+        }
+    }
+
+    const p = new Person();
+    const prop2 = p.eat();
+    console.log(prop2);
+
+    const obj = {
+        async eat(){
+            console.log('VPN');
+        }
+    }
+    const prop3 = obj.eat();
+    console.log(prop3);
+
+    async function foo1(){
+        throw new Error('have an error.'); // 如果foo1 没有被正确执行或者throw 一个error, 那么prop4的状态就是rejected
+    }
+    const prop4 = foo1();
+    console.log(prop4);
+</script>
+</body>
+</html>
