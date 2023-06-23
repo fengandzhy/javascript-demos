@@ -11,6 +11,7 @@
      * await 后面必须跟 promise对象, 如果跟其他对象, 没有太大意义, 多余
      * await 前面是获取 promise 成功后的结果, 如果后面的promise 状态是rejected 那就直接抛错
      * 当await 后面的promise 的状态是rejected 的时候, 只能用try catch 的方式来取到错误结果
+     * 对于await下面, 它会等到await执行完成后再去执行, 可以得到await的执行结果.
      * */
     async function foo(){
         const prop1 = await new Promise((resolve, reject) => {
