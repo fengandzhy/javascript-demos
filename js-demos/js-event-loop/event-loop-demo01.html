@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    /**
+     * 1 当前宏任务开始 (宏任务1)
+     * 2 宏任务1碰到console.log('全局的');立即执行
+     * 3 宏任务1碰到第一个setTimeout, 发现它也是个宏任务, 由于当前宏任务是宏任务1不会执行另外一个宏任务, 所以把该宏任务放到当前宏任务之后, 它的意思是当前宏任务(宏任务1)执行完成后立即执行
+     * 4 宏任务1继续执行, 碰到new Promise, 直接执行 new Promise里面的 内容, 又发现一个setTimeout， 同理放到当前宏任务之后, 它的意思是当前宏任务(宏任务1)执行完成后过2秒钟执行
+     * 5 宏任务1继续执行, 碰到console.log('Promise的'); 立即执行, 因为这是new Promise里面的内容, 不算微任务.
+     * 6 宏任务1继续执行, 碰到resolve();立即执行, 理由如上
+     * 7 宏任务1继续执行, 碰到then, 发现它是个微任务, 把它放到当前宏任务之后, 微任务是在本次宏任务周期内的. 就是说 then里面的内容会在宏任务1的周期内执行
+     * 8 宏任务1继续执行, 碰到console.log('又是全局的'); 立即执行, 发现后面没有东西了, 拿出微任务来执行, 所以执行了console.log('then的'); 之后宏任务1结束.
+     * 9 由于宏任务1结束, 有两个setTimeout在等到, 那么究竟执行哪一个呢？ 发现一开始的setTimeout 它是在当宏任务1执行到那里是0秒钟后放到任务队列里, 而promise里面的setTimeout是在当宏任务1执行到那里时2秒钟后放到队列里, 所以宏任务2是第一个setTimeout
+     * 10 宏任务2执行, 碰到了console.log('定时器的');立即执行
+     * 11 宏任务2继续执行, 碰到了new Promise 立即执行 console.log('定时器里面promise的'); 和 resolve();
+     * 12 宏任务2继续执行, 碰到了then 发现它是个微任务,  把它放到宏任务2的末尾
+     * 13 宏任务2继续执行, 碰到一个setTimeout, 发现它是一个宏任务, 该宏任务的意思是在宏任务2执行到这里时 500ms后放到任务对列里,
+     * 14 宏任务2继续执行, 碰到sleep(), 执行3秒后宏任务2结束.
+     * 15 现在剩下两个宏任务, 一个是promise里面的setTimeout, 一个是setTimeout里面的 setTimeout, 究竟执行哪一个
+     * 16 执行setTimeout里面的setTimeout, 因为promise 里面的setTimeout是在宏任务1执行到那里时, 2秒钟后放到任务对列里, 而setTimeout里面的setTimeout是在宏任务2执行到那里是0.5秒钟后放到任务对列里, 虽然宏任务1先执行, 但程序毕竟很快, 两者不至于差1.5秒, 所以setTimeout 里面的setTimeout是在任务队列里更靠前的那个
+     * 17 所以宏任务3执行的是 setTimeout 里面的 setTimeout, 即 console.log('定时器里面的定时器');
+     * 18 宏任务3执行完毕，开始宏任务4, 执行promise 里面的那个setTimeout, 即执行 console.log('Promise里面setTimeout的');
+     * 19 所有任务执行完毕
+     *
+     * */
+    console.log('全局的');
+    setTimeout(()=>{
+        console.log('定时器的');
+        new Promise((resolve, reject) => {
+            console.log('定时器里面promise的');
+            resolve();
+        }).then(() =>{
+            console.log('定时器里面promise里面then的');
+        });
+        // sleep(3000);
+        setTimeout(()=>{
+            console.log('定时器里面的定时器');
+        },500); // 0.5秒钟后放到事件队列里
+        sleep(3000);
+    },0);
+
+    new Promise((resolve,reject)=>{
+        setTimeout(()=>{
+            console.log('Promise里面setTimeout的');
+        },2000); // 2秒钟后放到事件队列拉里
+        console.log('Promise的'); //这里的代码其实跟全局的代码是一样的都是直接执行的
+        resolve();
+    }).then(()=>{
+        console.log('then的');
+    });
+    console.log('又是全局的');
+
+    function sleep(n) {
+        const start = new Date().getTime();
+        while (true) {
+            if (new Date().getTime() - start > n) {
+                break;
+            }
+        }
+    }
+</script>
+</body>
+</html>
