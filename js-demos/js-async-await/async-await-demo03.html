@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function one() {
+        return 'I am one';
+    }
+
+    function two() {
+        return new Promise((resolve, reject) => {
+            setTimeout(() => {
+               resolve('I am two');
+            }, 2000);
+        });
+    }
+
+    function three() {
+        return 'I am three';
+    }
+
+    async function fn(){
+        console.log(one());
+        console.log(await two()); // 再次验证了之前的结论, await后面必须跟promise对象, 否则没有意义, await下面的要等到await 执行完了再执行 await 必须在async函数里
+        console.log(three());
+    }
+
+    fn();
+</script>
+</body>
+</html>
