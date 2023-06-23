@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    /**
+     * await 必须在async 的函数里
+     * await 后面必须跟 promise对象, 如果跟其他对象, 没有太大意义, 多余
+     * await 前面是获取 promise 成功后的结果, 如果后面的promise 状态是rejected 那就直接抛错
+     *
+     * */
+    async function foo(){
+        const prop1 = await new Promise((resolve, reject) => {
+            resolve('success');
+        });
+        console.log(prop1);
+
+        // const prop2 = await new Promise((resolve, reject) => {
+        //     reject('failure');
+        // });
+        // console.log(prop2);
+    }
+
+    foo();
+</script>
+</body>
+</html>
