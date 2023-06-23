@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+    const prop1 = new Promise((resolve, reject) => {
+        reject('failure');
+    });
+
+    const prop2 = prop1.catch(err => {
+        console.log('err:', err);
+    }); // 这个prop2的状态是由 catch 里面的这个函数决定的, 尽管prop1的状态是rejected, 但只要catch 里面执行成功 prop2的状态可以是fulfilled
+
+    console.log(prop2);
+</script>
+</body>
+</html>
