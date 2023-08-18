@@ -8,6 +8,6 @@
 var arr = [1,3,5,7,7,5,3,1];
 console.log(arr.indexOf(5));   //2
 console.log(arr.lastIndexOf(5));   //5
-console.log(arr.indexOf(5,2));   //2
+console.log(arr.indexOf(5,6));   //-1 意思是从 arr[6] 开始找 5 找不到 -1
 console.log(arr.lastIndexOf(5,4));   //2
 console.log(arr.indexOf("5"));   //-1
