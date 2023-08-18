@@ -1,26 +1,4 @@
 /**
- * 这里探讨this
- * */
-
-
-/**
- * 当this在全局作用域里时，this指向全局对象本身
- * */
-var a = 1;
-var obj = {
-    a: 2,
-    c : {
-        a:3,
-        b:this.a,//这里的this就是在全局作用域里的this
-    },
-    fn: function () {
-        return this.a;//这里的this就是函数作用域里的this了，就要根据调用函数的具体情况来分析了.
-    }
-}
-console.log(obj.c.b);//1
-console.log(obj.fn());//2
-
-/**
  * 当this在函数作用域里是，this地绑定是由函数调用的方式决定的.具体由按照如下规则来确定,
  * 1.计算 MemberExpression 的结果赋值给 ref
  * 2.如果 ref 是 Reference，并且 base value 值不是Environment Record的时候,那么 this 的值为 GetBase(ref)
@@ -276,6 +254,3 @@ var b={
     }
 };
 b.show();
-
-
-
