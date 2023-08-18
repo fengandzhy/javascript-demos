@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="button" value="click me" onclick="fn1(this)">
+</body>
+<script type="text/javascript">
+
+    /**
+     * 上面这种调用的方式是在一个dom对象中调用的，这个跟下例中用obj.fn1()调用的道理是一样的
+     * */
+    function fn1(a){
+        console.log(a);
+    }
+
+    var obj = {
+        a:10,
+        fn1:function(){
+            console.log(this);
+        }
+    }
+
+    obj.fn1();
+</script>
+</html>
