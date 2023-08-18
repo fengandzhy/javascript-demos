@@ -45,7 +45,7 @@ console.log(typeof obj); // object
 console.log(typeof str); // str
 
 let f = new Number(1);
-let g = new Number(2);
+let g = new Number(1);
 console.log(f == g );// false
 
 console.log(false == 0); //true
