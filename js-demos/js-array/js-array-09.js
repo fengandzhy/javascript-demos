@@ -1,6 +1,8 @@
 
 
-
+/**
+ * forEach这个函数并没有返回值
+ * */
 var arr = [11, 22, 33, 44, 55];
 arr.forEach(function(x, index, a){
     console.log(x + '|' + index + '|' + (a === arr));
