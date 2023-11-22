@@ -30,7 +30,7 @@ a5 = 10;
 a5 = "hello";
 a5 = true;
 
-let a6:string;
+let a6: string;
 
 // d的类型是any，它可以赋值给任意变量
 a6 = a4;
@@ -40,9 +40,10 @@ a6 = 'hello';
 
 // unknown 实际上就是一个类型安全的any
 // unknown类型的变量，不能直接赋值给其他变量
-if(typeof a6 === "string"){
+if (typeof a6 === "string") {
     a5 = a6;
 }
+console.log('a5 is ' + a5);
 
 // 类型断言，可以用来告诉解析器变量的实际类型
 /*
@@ -51,15 +52,26 @@ if(typeof a6 === "string"){
 *   <类型>变量
 *
 * */
-a6 = a5 as string;
-a6 = <string>a5;
+let a7: string = a5 as string;
+a7 = <string>a5;
+console.log('a7 is ' + a7);
+
 
 // void 用来表示空，以函数为例，就表示没有返回值的函数
-function fn(): void{
+function a8(): void {
 }
 
 // never 表示永远不会返回结果
-function fn2(): never{
+function a9(): never {
     throw new Error('报错了！');
+}
+
+// 返回值是联合类型的函数
+function a10() : number | string {
+    if(a2 === 'male'){
+        return 3;
+    }else{
+        return '错啦';
+    }
 }
 
