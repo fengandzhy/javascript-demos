@@ -32,7 +32,8 @@ a5 = true;
 
 let a6: string;
 
-// d的类型是any，它可以赋值给任意变量
+
+// a4的类型是any，它可以赋值给任意变量
 a6 = a4;
 console.log(a6);
 
@@ -42,6 +43,7 @@ a6 = 'hello';
 // unknown类型的变量，不能直接赋值给其他变量
 if (typeof a6 === "string") {
     a5 = a6;
+    // a6 = a5 // a5 给 a6赋值就不行
 }
 console.log('a5 is ' + a5);
 
