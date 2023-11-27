@@ -54,5 +54,10 @@ b8 = ['hello', 123];
 b8.push('b');
 console.log(b8); // 跟数组一样它是可以push 的
 
-
-
+enum Color {
+    Red = 1,
+    Green = 2,
+    Blue = 4,
+}
+let b9: Color = Color.Green;
+console.log(b9);
