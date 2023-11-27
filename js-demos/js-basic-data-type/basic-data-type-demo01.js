@@ -17,6 +17,14 @@ console.log(typeof(function (){}));
 console.log(typeof(true));
 console.log(typeof(undefined));
 
+console.log(typeof 2);               // number
+console.log(typeof true);            // boolean
+console.log(typeof 'str');           // string
+console.log(typeof []);              // object     []数组的数据类型在 typeof 中被解释为 object
+console.log(typeof function(){});    // function
+console.log(typeof {});              // object
+console.log(typeof undefined);       // undefined
+console.log(typeof null);            // object     null 的数据类型被 typeof 解释为 object
 
 /**
  * js 中只有字面量才能相等==, 任何对象都是不可能相等.
