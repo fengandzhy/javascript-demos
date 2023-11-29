@@ -20,6 +20,8 @@ console.log(b3);
 let b4: {name: string, [propName: string]: any}; // 它除了有个name 是string 之外, 其余的, 随便
 b4 = {name: '猪八戒', age: 18, gender: '男'};
 
+let b10: {name: string, [propName: number]: any}; // 这里的属性名也可以是number类型的
+b10 = {name: '猪八戒', 4: 18, 3: '男'};
 /**
  * 定义b5 为一个函数类型, 该函数有两个number的参数, 然后有一个number类型的返回值,
  * 具体语法：(形参:类型, 形参:类型 ...) => 返回值
@@ -50,7 +52,7 @@ console.log(b7);
 *       语法：[类型, 类型, 类型]
 * */
 let b8: [string, number];
-b8 = ['hello', 123];
+b8 = ['hello', 123]; // 元祖的意思就是这个数组在这里赋值的时候不能多加元素了
 b8.push('b');
 console.log(b8); // 跟数组一样它是可以push 的
 

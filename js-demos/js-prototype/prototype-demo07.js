@@ -15,7 +15,7 @@ var person = new Person();
 console.log(person);
 console.log(person.__proto__);
 console.log(person.__proto__.__proto__);
-console.log(person.constructor);
+console.log(person.constructor); // 它会去找person.__proto__.constructor
 console.log(person.__proto__.constructor);
 console.log(person.__proto__.__proto__.constructor);
 
