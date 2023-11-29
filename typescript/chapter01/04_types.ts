@@ -50,7 +50,7 @@ console.log(b7);
 *       语法：[类型, 类型, 类型]
 * */
 let b8: [string, number];
-b8 = ['hello', 123];
+b8 = ['hello', 123]; // 元祖的意思就是这个数组在这里赋值的时候不能多加元素了
 b8.push('b');
 console.log(b8); // 跟数组一样它是可以push 的
 
