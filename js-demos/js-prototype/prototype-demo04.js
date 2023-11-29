@@ -14,10 +14,15 @@ function Person() {
 var person = new Person();
 console.log(person instanceof Person); //true
 console.log(person instanceof Object); //true
+
+
 console.log(Object instanceof Function);//true
 console.log(Person instanceof Function);//true
+console.log(Function instanceof Function); //true
+
 console.log(Function instanceof Object);//true
 console.log(Person instanceof Object);//true
+console.log(Object instanceof Object); // true
 
 console.log(2 instanceof Number);                    // false
 console.log(true instanceof Boolean);                // false
