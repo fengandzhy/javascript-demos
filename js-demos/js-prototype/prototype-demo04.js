@@ -24,7 +24,8 @@ console.log(Function instanceof Object);//true
 console.log(Person instanceof Object);//true
 console.log(Object instanceof Object); // true
 
-console.log(2 instanceof Number);                    // false
+
+console.log(2 instanceof Number);                    // false 字面量在这里不会是true
 console.log(true instanceof Boolean);                // false
 console.log('str' instanceof String);                // false
 console.log([] instanceof Array);                    // true
