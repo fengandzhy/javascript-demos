@@ -35,3 +35,7 @@ console.log({} instanceof Object);                   // true
 console.log(new Number(2) instanceof Number); // true
 console.log(new Boolean(true) instanceof Boolean); // true
 console.log(new String('str') instanceof String); // true
+
+console.log((2) instanceof Number); // false
+console.log((2).__proto__ === Number.prototype); // true
+
