@@ -2,7 +2,7 @@
 
 function Person(){}
 console.log(Person);
-console.log(typeof Person.__proto__);
+console.log(Person.__proto__);
 console.log(Person.__proto__.__proto__);
 console.log(Person instanceof Function); // true
 console.log(Person instanceof Object);  // true
