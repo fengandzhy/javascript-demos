@@ -12,3 +12,4 @@ console.log(Function.constructor === Function); // true
 console.log(typeof Function.__proto__ === 'function'); // true
 console.log(typeof Function.__proto__.__proto__ === Function.prototype); //false
 console.log(typeof Function.__proto__ instanceof Function); // false
+
