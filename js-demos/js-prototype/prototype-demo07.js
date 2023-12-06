@@ -9,6 +9,10 @@
  * 不同的是 Object.prototype 是所有对象额原形对象, 而Function.prototype 就是 Function.__proto__ 本身
  * 而Person.prototype 是person的原形对象
  *
+ * 4 Object 负责创建一切对象 所以一切对象的原形对象都是 Object.prototype,
+ * Function 负责创建一切函数对象, 所以一切函数对象的原形对象都是 Function.prototype
+ *
+ *
  * */
 function Person(){}
 var person = new Person();
