@@ -1,0 +1,5 @@
+console.log(Object.prototype.toString.call(new Date)); // "[object Date]"
+console.log(Object.prototype.toString.call([])); // "[object Array]"
+console.log(Object.prototype.toString.call(/reg/ig)); // "[object RegExp]"
+console.log(Object.prototype.toString.call(Function)); // "[object Function]"
+console.log(Object.prototype.toString.call(Function.prototype)); // "[object Function]"
