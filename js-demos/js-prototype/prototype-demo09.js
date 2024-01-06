@@ -10,6 +10,7 @@ console.log(Function instanceof Function); // true
 console.log(Function.__proto__.__proto__); // 所有对象的原形对象
 console.log(Function.constructor === Function); // true
 console.log(typeof Function.__proto__ === 'function'); // true
-console.log(typeof Function.__proto__.__proto__ === Function.prototype); //false
-console.log(typeof Function.__proto__ instanceof Function); // false
+console.log(typeof Function.__proto__.__proto__ === 'object'); //true
+console.log(typeof Function.__proto__ === 'function'); // true
+console.log(Function.__proto__ instanceof Function); // false
 
