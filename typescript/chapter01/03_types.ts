@@ -5,7 +5,7 @@ a1 = 10;
 console.log(a1);
 
 // 可以使用 | 来连接多个类型（联合类型）
-let a2: "male" | "female";
+let a2: "male" | "female"; // 字面量进行类型声明a2的值只能是 male 和 female
 a2 = "male";
 a2 = "female";
 
@@ -54,13 +54,15 @@ console.log('a5 is ' + a5);
 *   <类型>变量
 *
 * */
+a5 = true;
 let a7: string = a5 as string;
 a7 = <string>a5;
 console.log('a7 is ' + a7);
 
 
-// void 用来表示空，以函数为例，就表示没有返回值的函数
+// void 用来表示空，以函数为例，就表示没有返回值的函数 undefined | null 是可以的
 function a8(): void {
+
 }
 
 // never 表示永远不会返回结果
