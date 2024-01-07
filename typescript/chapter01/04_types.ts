@@ -56,6 +56,10 @@ b8 = ['hello', 123]; // 元祖的意思就是这个数组在这里赋值的时�
 b8.push('b');
 console.log(b8); // 跟数组一样它是可以push 的
 
+
+/**
+ * 枚举
+ * */
 enum Color {
     Red = 1,
     Green = 2,
@@ -63,3 +67,17 @@ enum Color {
 }
 let b9: Color = Color.Green;
 console.log(b9);
+
+
+enum Gender {
+    Male = 1,
+    Female = 0
+}
+
+// 这里定义枚举类型
+let b11: {name:string, gender:Gender};
+b11 = {
+  name:'孙悟空',
+  gender: Gender.Female
+}
+
